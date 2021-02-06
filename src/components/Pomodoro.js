@@ -1,7 +1,6 @@
 import { useState, useRef } from 'react';
 import {padTime} from '../helpers.js';
 
-
 const Pomodoro = () => {
 
     const [title, setTitle] = useState('Start countdown!');
