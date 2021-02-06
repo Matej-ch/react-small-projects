@@ -45,7 +45,7 @@ const Pomodoro = () => {
     }
 
     return (
-        <div className="pomodoro flex flex-col justify-center w-full h-full items-center space-y-2 bg-blue-300">
+        <div className="pomodoro flex flex-col justify-center w-full h-screen items-center space-y-2 bg-blue-300">
             <h2 className="font-semibold uppercase text-xl lg:text-3xl text-blue-900 text-opacity-80">{title}</h2>
 
             <div className="timer flex flex-row justify-center text-6xl lg:text-9xl text-gray-700 items-center py-8 space-x-2">

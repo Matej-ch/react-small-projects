@@ -2,11 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import Pomodoro from "./components/Pomodoro";
+import App from "./components/App";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Pomodoro />
+    <App/>
   </React.StrictMode>,
   document.getElementById('root')
 );
