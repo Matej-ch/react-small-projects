@@ -1,8 +1,9 @@
 import { useState } from 'react'
-import Pomodoro from "./Pomodoro";
-import MarkdownEditor from "./MarkdownEditor";
-import Header from "./Header";
-import BrowserTabs from "./BrowserTabs";
+import Pomodoro from "./components/Pomodoro";
+import MarkdownEditor from "./components/MarkdownEditor";
+import Header from "./components/Header";
+import BrowserTabs from "./components/BrowserTabs";
+import Game from "./components/Game";
 
 function App() {
     const [state, setState] = useState('pomodoro')
@@ -19,17 +20,26 @@ function App() {
         setState('tabs');
     }
 
+    function gameState() {
+        setState('game');
+    }
+
     return (
         <div>
             <Header addEditor={ markdownState }
                     addPomodoro={pomodoroState}
-                    addTabs={tabsState} />
+                    addTabs={tabsState}
+                    addGame={gameState} />
 
             {state === 'pomodoro' && (<Pomodoro />)}
 
             {state === 'markdown' && <MarkdownEditor />}
 
             {state === 'tabs' && <BrowserTabs />}
+
+            {state === 'game' && <Game />}
+
+
         </div>
     )
 }
