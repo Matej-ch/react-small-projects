@@ -76,3 +76,10 @@
 .images {
     display: none;
 }
+
+.link-app {
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    background-image: url('https://i.imgur.com/noNWRPk.png');
+}
