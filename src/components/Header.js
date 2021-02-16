@@ -19,6 +19,10 @@ const Header = (props) => {
                         <button  className="font-semibold" onClick={props.addGame}>Rock/Paper/Scissors</button>
                     </div>
 
+                    <div>
+                        <button  className="font-semibold" onClick={props.addLink}>Link</button>
+                    </div>
+
                 </div>
             </div>
         </header>

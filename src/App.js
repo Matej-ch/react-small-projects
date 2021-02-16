@@ -4,6 +4,7 @@ import MarkdownEditor from "./components/MarkdownEditor";
 import Header from "./components/Header";
 import BrowserTabs from "./components/BrowserTabs";
 import Game from "./components/Game";
+import Link from "./components/Link";
 
 function App() {
     const [state, setState] = useState('pomodoro')
@@ -24,12 +25,17 @@ function App() {
         setState('game');
     }
 
+    function linkState() {
+        setState('link');
+    }
+
     return (
         <div>
             <Header addEditor={ markdownState }
                     addPomodoro={pomodoroState}
                     addTabs={tabsState}
-                    addGame={gameState} />
+                    addGame={gameState}
+                    addLink={linkState} />
 
             {state === 'pomodoro' && (<Pomodoro />)}
 
@@ -39,7 +45,7 @@ function App() {
 
             {state === 'game' && <Game />}
 
-
+            {state === 'link' && <Link />}
         </div>
     )
 }
