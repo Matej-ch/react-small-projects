@@ -23,6 +23,10 @@ const Header = (props) => {
                         <button  className="font-semibold" onClick={props.addLink}>Link</button>
                     </div>
 
+                    <div>
+                        <button  className="font-semibold" onClick={props.addImageGallery}>Image gallery</button>
+                    </div>
+
                 </div>
             </div>
         </header>

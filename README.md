@@ -20,3 +20,6 @@
 @todo link on visible at beginning
 
 @todo move an entire map, because map is bigger than screen
+
+### Image gallery
+@todo layout design fix

@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import BrowserTabs from "./components/BrowserTabs";
 import Game from "./components/Game";
 import Link from "./components/Link";
+import ImageGallery from "./components/ImageGallery";
 
 function App() {
     const [state, setState] = useState('pomodoro')
@@ -29,13 +30,18 @@ function App() {
         setState('link');
     }
 
+    function galleryState() {
+        setState('gallery')
+    }
+
     return (
         <div>
             <Header addEditor={ markdownState }
                     addPomodoro={pomodoroState}
                     addTabs={tabsState}
                     addGame={gameState}
-                    addLink={linkState} />
+                    addLink={linkState}
+                    addImageGallery={galleryState} />
 
             {state === 'pomodoro' && (<Pomodoro />)}
 
@@ -46,6 +52,8 @@ function App() {
             {state === 'game' && <Game />}
 
             {state === 'link' && <Link />}
+
+            {state === 'gallery' && <ImageGallery /> }
         </div>
     )
 }
