@@ -1,4 +1,4 @@
-
+import {Link} from "react-router-dom";
 const Header = (props) => {
 
     return (
@@ -6,25 +6,25 @@ const Header = (props) => {
             <div className="flex flex-row justify-start px-4 sm:px-6 w-full">
                 <div className="flex justify-between items-center py-2 md:justify-start md:space-x-10">
                     <div>
-                        <button className="font-semibold" onClick={props.addPomodoro}>Pomodoro</button>
+                        <Link to="/" className="font-semibold">Pomodoro</Link>
                     </div>
                     <div>
-                        <button className="font-semibold" onClick={props.addEditor}>Markdown editor</button>
+                        <Link to="/editor" className="font-semibold">Markdown editor</Link>
                     </div>
                     <div>
-                        <button  className="font-semibold" onClick={props.addTabs}>Tabs</button>
-                    </div>
-
-                    <div>
-                        <button  className="font-semibold" onClick={props.addGame}>Rock/Paper/Scissors</button>
+                        <Link to="/tabs" className="font-semibold">Tabs</Link>
                     </div>
 
                     <div>
-                        <button  className="font-semibold" onClick={props.addLink}>Link</button>
+                        <Link to="/game" className="font-semibold" >Rock/Paper/Scissors</Link>
                     </div>
 
                     <div>
-                        <button  className="font-semibold" onClick={props.addImageGallery}>Image gallery</button>
+                        <Link to="/link" className="font-semibold">Link</Link>
+                    </div>
+
+                    <div>
+                        <Link to="/gallery" className="font-semibold">Image gallery</Link>
                     </div>
 
                 </div>

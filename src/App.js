@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import Pomodoro from "./components/Pomodoro";
 import MarkdownEditor from "./components/MarkdownEditor";
 import Header from "./components/Header";
@@ -7,53 +6,31 @@ import Game from "./components/Game";
 import Link from "./components/Link";
 import ImageGallery from "./components/ImageGallery";
 
+import { BrowserRouter as Router, Switch, Route} from "react-router-dom"
+
 function App() {
-    const [state, setState] = useState('pomodoro')
-
-    function markdownState() {
-        setState('markdown')
-    }
-
-    function pomodoroState() {
-        setState('pomodoro');
-    }
-
-    function tabsState() {
-        setState('tabs');
-    }
-
-    function gameState() {
-        setState('game');
-    }
-
-    function linkState() {
-        setState('link');
-    }
-
-    function galleryState() {
-        setState('gallery')
-    }
 
     return (
         <div>
-            <Header addEditor={ markdownState }
-                    addPomodoro={pomodoroState}
-                    addTabs={tabsState}
-                    addGame={gameState}
-                    addLink={linkState}
-                    addImageGallery={galleryState} />
+            <Router>
 
-            {state === 'pomodoro' && (<Pomodoro />)}
+                <Header />
 
-            {state === 'markdown' && <MarkdownEditor />}
+                <Switch>
+                    <Route exact path="/" component={Pomodoro}/>
 
-            {state === 'tabs' && <BrowserTabs />}
+                    <Route path="/editor" component={MarkdownEditor}/>
 
-            {state === 'game' && <Game />}
+                    <Route path="/tabs" component={BrowserTabs}/>
 
-            {state === 'link' && <Link />}
+                    <Route path="/game" component={Game}/>
 
-            {state === 'gallery' && <ImageGallery /> }
+                    <Route path="/link" component={Link}/>
+
+                    <Route path="/gallery" component={ImageGallery}/>
+                </Switch>
+
+            </Router>
         </div>
     )
 }
