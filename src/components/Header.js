@@ -27,6 +27,10 @@ const Header = (props) => {
                         <Link to="/gallery" className="font-semibold">Image gallery</Link>
                     </div>
 
+                    <div>
+                        <Link to="/trivia" className="font-semibold">Trivia</Link>
+                    </div>
+
                 </div>
             </div>
         </header>

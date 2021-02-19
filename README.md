@@ -17,7 +17,7 @@
 ### Link
 @todo fix movement, and make sure link won't go behind borders 
 
-@todo link on visible at beginning
+@todo link on visible at beginning FIXED
 
 @todo move an entire map, because map is bigger than screen
 

@@ -7,11 +7,13 @@ import Link from "./components/Link";
 import ImageGallery from "./components/ImageGallery";
 
 import { BrowserRouter as Router, Switch, Route} from "react-router-dom"
+import Trivia from "./components/Trivia";
 
 function App() {
 
+    //flex: 1 1 auto;"
     return (
-        <div>
+        <div className="h-screen flex flex-col">
             <Router>
 
                 <Header />
@@ -28,6 +30,8 @@ function App() {
                     <Route path="/link" component={Link}/>
 
                     <Route path="/gallery" component={ImageGallery}/>
+
+                    <Route path="/trivia" component={Trivia}/>
                 </Switch>
 
             </Router>
