@@ -8,10 +8,10 @@ import ImageGallery from "./components/ImageGallery";
 
 import { BrowserRouter as Router, Switch, Route} from "react-router-dom"
 import Trivia from "./components/Trivia";
+import Calendar from "./components/Calendar";
 
 function App() {
 
-    //flex: 1 1 auto;"
     return (
         <div className="h-screen flex flex-col">
             <Router>
@@ -32,6 +32,8 @@ function App() {
                     <Route path="/gallery" component={ImageGallery}/>
 
                     <Route path="/trivia" component={Trivia}/>
+
+                    <Route path="/calendar" component={Calendar}/>
                 </Switch>
 
             </Router>
