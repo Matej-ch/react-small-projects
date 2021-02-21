@@ -39,7 +39,7 @@ const Calendar = () => {
     }
 
     return (
-        <div className="pomodoro flex flex-col justify-center w-full h-full items-center space-y-2 bg-red-200">
+        <div className="calendar flex flex-col justify-center w-full h-full items-center space-y-2 bg-red-200">
             <div className="date-chooser flex flex-row justify-between w-full max-w-sm">
                 <button className="date-chooser-button flex flex-col" onClick={() => setChoosingType('start')}>
                     Start date <span>{startDate}</span>

@@ -32,6 +32,10 @@ const Header = (props) => {
                     </div>
 
                     <div>
+                        <Link to="/speech" className="font-semibold">Speech</Link>
+                    </div>
+
+                    <div>
                         <Link to="/calendar" className="font-semibold">Calendar</Link>
                     </div>
 

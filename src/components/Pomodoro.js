@@ -48,7 +48,9 @@ const Pomodoro = () => {
             <h2 className="font-semibold uppercase text-xl lg:text-3xl text-blue-900 text-opacity-80">{title}</h2>
 
             <div className="timer flex flex-row justify-center text-6xl lg:text-9xl text-gray-700 items-center py-8 space-x-2">
-                <span>{minutes}</span><span>:</span><span>{seconds}</span>
+                <span>{minutes}</span>
+                <span>:</span>
+                <span>{seconds}</span>
             </div>
 
             <div className="buttons space-y-2 lg:space-x-2 w-full flex flex-col lg:flex-row justify-center items-center lg:items-baseline">

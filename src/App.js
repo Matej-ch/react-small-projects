@@ -9,6 +9,7 @@ import ImageGallery from "./components/ImageGallery";
 import { BrowserRouter as Router, Switch, Route} from "react-router-dom"
 import Trivia from "./components/Trivia";
 import Calendar from "./components/Calendar";
+import Speech from "./components/Speech";
 
 function App() {
 
@@ -32,6 +33,8 @@ function App() {
                     <Route path="/gallery" component={ImageGallery}/>
 
                     <Route path="/trivia" component={Trivia}/>
+
+                    <Route path="/speech" component={Speech}/>
 
                     <Route path="/calendar" component={Calendar}/>
                 </Switch>

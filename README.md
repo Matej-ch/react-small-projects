@@ -27,3 +27,8 @@
 
 ### Calendar 
 @todo month switching
+
+@todo style like this https://miro.medium.com/max/631/1*7nkXuZNIB7UUdSFKdIZHVQ.png
+
+### Speech
+@toto style
