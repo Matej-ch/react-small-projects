@@ -32,3 +32,6 @@
 
 ### Speech
 @toto style
+
+### Trivia 
+@todo style
