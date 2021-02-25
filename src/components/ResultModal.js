@@ -1,22 +1,23 @@
-const ResultModal = () => {
+const ResultModal = ({isCorrect,question,getQuestion}) => {
     return (
         <div>
             <div className="overlay" />
             <div className="result-modal">
-                <h3>
-                    YOU WON
-                </h3>
-                <h3>
-                    YOU LOST
-                </h3>
 
-                <div>
-                    <small>The correct answer was:</small>
-                    <br/>
-                    <strong>Answer here</strong>
-                </div>
+                {isCorrect &&<h3>YOU WON</h3>}
 
-                <button>Go to next question</button>
+                {!isCorrect && <h3>YOU LOST</h3>}
+
+                {!isCorrect && (
+                    <div>
+                        <small>The correct answer was:</small>
+                        <br/>
+                        <strong dangerouslySetInnerHTML={{__html:question.correct_answer }} />
+                    </div>
+                )}
+
+
+                <button onClick={getQuestion}>Go to next question</button>
             </div>
         </div>
     )

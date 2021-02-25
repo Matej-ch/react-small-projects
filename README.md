@@ -35,3 +35,4 @@
 
 ### Trivia 
 @todo style
+@todo add type and difficulty

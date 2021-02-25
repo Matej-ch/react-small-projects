@@ -1,13 +1,13 @@
 import categories from '../categories'
 
-const CategorySelector = () => {
+const CategorySelector = ({category, chooseCategory}) => {
     return (
         <div>
             <p>Select category</p>
-            <select name="" id="">
+            <select value={category} onChange={e => chooseCategory(e.target.value)}>
                 {categories.map((category,index) => (
-                    <option key={index} value={category.id}>
-                        { category.name }
+                    <option key={index} value={category.id} dangerouslySetInnerHTML={{__html:category.name  }}>
+
                     </option>
                 ))}
             </select>
