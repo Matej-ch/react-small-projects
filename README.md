@@ -5,6 +5,7 @@
 
 ### Markdown Editor
 @todo add css styles for editor
+@todo dynamic scroll height
 
 ### Tabs
 @todo fix hover functionality
