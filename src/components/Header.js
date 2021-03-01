@@ -39,6 +39,10 @@ const Header = (props) => {
                         <Link to="/calendar" className="font-semibold">Calendar</Link>
                     </div>
 
+                    <div>
+                        <Link to="/message" className="font-semibold">Vis. messages</Link>
+                    </div>
+
                 </div>
             </div>
         </header>

@@ -5,11 +5,11 @@ import BrowserTabs from "./components/BrowserTabs";
 import Game from "./components/Game";
 import Link from "./components/Link";
 import ImageGallery from "./components/ImageGallery";
-
 import { BrowserRouter as Router, Switch, Route} from "react-router-dom"
 import Trivia from "./components/Trivia";
 import Calendar from "./components/Calendar";
 import Speech from "./components/Speech";
+import Message from "./components/Message";
 
 function App() {
 
@@ -37,6 +37,8 @@ function App() {
                     <Route path="/speech" component={Speech}/>
 
                     <Route path="/calendar" component={Calendar}/>
+
+                    <Route path="/message" component={Message}/>
                 </Switch>
 
             </Router>
