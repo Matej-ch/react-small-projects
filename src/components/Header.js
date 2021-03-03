@@ -43,6 +43,10 @@ const Header = (props) => {
                         <Link to="/message" className="font-semibold">Vis. messages</Link>
                     </div>
 
+                    <div>
+                        <Link to="/form" className="font-semibold">Form</Link>
+                    </div>
+
                 </div>
             </div>
         </header>
