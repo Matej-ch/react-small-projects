@@ -44,7 +44,7 @@ const Header = (props) => {
                     </div>
 
                     <div>
-                        <Link to="/form" className="font-semibold">Form</Link>
+                        <Link to="/form/signup" className="font-semibold">Form</Link>
                     </div>
 
                 </div>
