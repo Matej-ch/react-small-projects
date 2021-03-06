@@ -1,39 +1,23 @@
-### Pomodoro
-@todo add user set countdown
+Issues moved here [https://github.com/users/Matej-ch/projects/2][https://github.com/users/Matej-ch/projects/2]
 
-@todo add notification when timer runs out
+### Pomodoro
 
 ### Markdown Editor
-@todo add css styles for editor
-@todo dynamic scroll height
 
 ### Tabs
-@todo fix hover functionality
 
 ### Rock/Paper/Scissors
-@todo add pictures
-
-@todo fix notification who won
 
 ### Link
-@todo fix movement, and make sure link won't go behind borders 
-
-@todo link on visible at beginning FIXED
-
-@todo move an entire map, because map is bigger than screen
 
 ### Image gallery
-@todo layout design fix
 
-
-### Calendar 
-@todo month switching
-
-@todo style like this https://miro.medium.com/max/631/1*7nkXuZNIB7UUdSFKdIZHVQ.png
+### Calendar
 
 ### Speech
-@toto style
 
 ### Trivia 
-@todo style
-@todo add type and difficulty
+
+### Multi-step form
+
+[https://github.com/users/Matej-ch/projects/2]: https://github.com/users/Matej-ch/projects/2
