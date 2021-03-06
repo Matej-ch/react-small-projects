@@ -93,3 +93,63 @@
 .image:nth-child(6n) {
     grid-column-end: span 5;
 }
+
+
+.cards {
+    display: grid;
+    grid-template: repeat(3, 1fr) / repeat(4, 1fr);
+    gap: 10px;
+}
+
+.memory-card {
+    border-radius: 2px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    outline: none;
+    font-family: 'Patrick Hand', sans-serif;
+}
+
+.memory-card.flipped .inner {
+    transform: rotateY(180deg);
+}
+
+.inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: 0.6s cubic-bezier(0.38, 0.02, 0.09, 1.66) all;
+}
+
+.memory-card .front,
+.memory-card .back {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    backface-visibility: hidden;
+}
+
+.memory-card .front {
+    background: #fff;
+    transform: rotateY(180deg);
+}
+
+.memory-card .back {
+    background: #ae1c35;
+    color: #d6aeb5;
+    font-size: 100px;
+    transition: 0.3s ease all;
+}
+
+.memory-card .back:hover {
+    background: #cc2f49;
+    color: #fff;
+    transform: scale(1.02);
+}

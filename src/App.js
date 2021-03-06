@@ -11,6 +11,7 @@ import Calendar from "./components/Calendar";
 import Speech from "./components/Speech";
 import Message from "./components/Message";
 import SignupForm from "./components/SignupForm/SignupForm";
+import MemoryGame from "./components/MemoryGame";
 
 function App() {
 
@@ -42,6 +43,8 @@ function App() {
                     <Route path="/message" component={Message}/>
 
                     <Route path="/form" component={SignupForm}/>
+
+                    <Route path="/memory" component={MemoryGame}/>
                 </Switch>
 
             </Router>

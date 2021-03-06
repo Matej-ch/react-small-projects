@@ -47,6 +47,10 @@ const Header = (props) => {
                         <Link to="/form/signup" className="font-semibold">Form</Link>
                     </div>
 
+                    <div>
+                        <Link to="/memory" className="font-semibold">Memory game</Link>
+                    </div>
+
                 </div>
             </div>
         </header>
