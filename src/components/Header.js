@@ -51,6 +51,10 @@ const Header = (props) => {
                         <Link to="/memory" className="font-semibold">Memory game</Link>
                     </div>
 
+                    <div>
+                        <Link to="/math" className="font-semibold">Math cards</Link>
+                    </div>
+
                 </div>
             </div>
         </header>
