@@ -55,6 +55,10 @@ const Header = (props) => {
                         <Link to="/math" className="font-semibold">Math cards</Link>
                     </div>
 
+                    <div>
+                        <Link to="/typing" className="font-semibold">Typing</Link>
+                    </div>
+
                 </div>
             </div>
         </header>

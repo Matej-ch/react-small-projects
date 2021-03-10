@@ -13,6 +13,7 @@ import Message from "./components/Message";
 import SignupForm from "./components/SignupForm/SignupForm";
 import MemoryGame from "./components/MemoryGame";
 import MathGame from "./components/MathGame";
+import TypingTester from "./components/TypingTester";
 
 function App() {
 
@@ -48,6 +49,8 @@ function App() {
                     <Route path="/memory" component={MemoryGame}/>
 
                     <Route path="/math" component={MathGame}/>
+
+                    <Route path="/typing" component={TypingTester}/>
                 </Switch>
 
             </Router>
