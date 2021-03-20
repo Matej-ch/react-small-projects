@@ -16,13 +16,11 @@ const MarkdownEditor = () => {
                     <textarea onChange={handleChange } className="w-full h-full" value={markdown} />
                 </div>
 
-                <ReactMarkdown className="h-3/4 p-4 w-1/2 bg-gray-100 rounded border border-gray-200" source={markdown}/>
+                <ReactMarkdown className="h-3/4 p-4 w-1/2 bg-gray-100 rounded border border-gray-200 overflow-auto" source={markdown}/>
 
             </div>
         </div>
     );
 };
-
-
 
 export default MarkdownEditor;
