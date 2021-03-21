@@ -1,16 +1,16 @@
 import { useState } from 'react';
 function Tab({children}) {
 
-    const [highlightStyle,setHighlightStyle] = useState({left: 0})
+    const [highlightStyle,setHighlightStyle] = useState({opacity: 0,left: 0})
 
     function moveHighlight(e) {
-        setHighlightStyle({left:  e.nativeEvent.layerX - 100});
+        setHighlightStyle({left:  `${e.nativeEvent.layerX - 100}px`});
     }
 
     function hideHighLight(e) {
         setHighlightStyle({
             opacity: 0,
-            left: e.nativeEvent.layerX - 100,
+            left: `${e.nativeEvent.layerX - 100}px`,
         })
     }
 
