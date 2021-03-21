@@ -53,34 +53,34 @@ const ImageGallery = () => {
     }
 
     return (
-        <div>
-            <h1>Image gallery</h1>
+        <div className="py-8">
+            <h1 className="text-center pb-">Image gallery</h1>
 
-            <form onSubmit={searchPhotos}>
-                <input type="text" placeholder="search gallery" value={query} onChange={e => setQuery(e.target.value)}/>
-                <button>Search</button>
+            <form onSubmit={searchPhotos} className="m-4 flex justify-center">
+                <input value={query} onChange={e => setQuery(e.target.value)}
+                    className="rounded-l-lg p-4 border-t mr-0 border-b border-l text-gray-800 border-gray-200 bg-white"
+                    placeholder="search pictures"/>
+                <button type="submit"
+                    className="px-8 rounded-r-lg bg-yellow-400  text-gray-800 font-bold p-4 uppercase border-yellow-500 border-t border-b border-r">Search
+                </button>
             </form>
 
             <InfiniteScroll
                 dataLength={images.length} //This is important field to render the next data
                 next={() => setPage((page) => page + 1) }
                 hasMore={true}
-                loader={<h4>Loading...</h4>}
-            >
-
-                <div className="image-grid grid">
+                loader={<h4 className="text-center">Loading...</h4>}>
+                <div className="image-grid grid max-w-full mx-auto lg:px-40">
                     {
                         images.map((image,index) => (
                             <a className="image" href={image.links.html} key={index} target="_blank" rel="noopener noreferrer">
-                                <img className="flex w-full h-full object-cover" src={image.urls.regular} alt="Cat"/>
+                                <img className="shadow-lg rounded w-full h-full align-middle border-none object-cover" src={image.urls.regular} alt="Cat"/>
                             </a>
                         ))
                     }
                 </div>
 
             </InfiniteScroll>
-
-
         </div>
     );
 }
