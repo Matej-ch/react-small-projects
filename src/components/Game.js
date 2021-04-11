@@ -44,11 +44,19 @@ function Game() {
 
             {gameState && <div
                 className="bg-indigo-100 border-t-4 border-indigo rounded-b text-indigo-900 px-4 py-3 shadow-md my-2">
-                <div className="flex">
+
+                <div className="flex flex-row justify-between items-baseline space-x-2">
                     <p className="text-sm">{userChoice.name}</p>
-                    <h1>{gameState === 'win' ? 'You won' : 'You lost' }</h1>
+                    {gameState === 'win' && <h1>You won!</h1>}
+                    {gameState === 'lose' && <h1>You lost!</h1>}
+                    {gameState === 'draw' && <h1>You drew!</h1>}
                     <p className="text-sm">{computerChoice.name}</p>
                 </div>
+
+                <div className="text-center pt-4">
+                    <button onClick={restartGame} className="focus:outline-none text-white text-sm py-2.5 px-5 rounded-md bg-gradient-to-r from-yellow-400 to-yellow-600 transform hover:scale-110">Restart</button>
+                </div>
+
             </div>}
 
             <div className="flex flex-row items-center">
