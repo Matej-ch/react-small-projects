@@ -1,9 +1,13 @@
 import { useState, useEffect } from 'react';
 
+import rock from '../images/icon-rock.svg'
+import paper from '../images/icon-paper.svg'
+import scissors from '../images/icon-scissors.svg'
+
 const choices = [
-    {id:1,name:'rock',icon:'R',losesTo: 2 },
-    {id:2,name:'Paper',icon:'P',losesTo: 3 },
-    {id:3,name:'Scissors',icon:'S',losesTo: 1},
+    {id:1,name:'rock',icon:rock,losesTo: 2 },
+    {id:2,name:'Paper',icon:paper,losesTo: 3 },
+    {id:3,name:'Scissors',icon:scissors,losesTo: 1},
 ];
 
 function Game() {
@@ -49,7 +53,7 @@ function Game() {
                     <p className="text-sm">{userChoice.name}</p>
                     {gameState === 'win' && <h1>You won!</h1>}
                     {gameState === 'lose' && <h1>You lost!</h1>}
-                    {gameState === 'draw' && <h1>You drew!</h1>}
+                    {gameState === 'draw' && <h1>You tied!</h1>}
                     <p className="text-sm">{computerChoice.name}</p>
                 </div>
 
@@ -59,14 +63,14 @@ function Game() {
 
             </div>}
 
-            <div className="flex flex-row items-center">
-                <h1 className="text-gray-800 px-8 text-3xl">Rock. Paper. Scissors</h1>
-                <div className="flex flex-row space-x-2 px-8">
-                    <div className="flex items-center pr-8">
+            <div className="flex flex-col items-center">
+                <h1 className="text-gray-800 px-8 py-4 text-3xl">Rock. Paper. Scissors</h1>
+                <div className="flex flex-row space-x-4 px-2">
+                    <div className="flex items-baseline">
                         <span className="text-green-800 text-5xl font-bold pr-2">{wins}</span>
                         <span className="text-2xl text-gray-800">{wins ? 'Win' : 'Wins'}</span>
                     </div>
-                    <div className="flex items-center">
+                    <div className="flex items-baseline">
                         <span className="text-red-800 text-5xl font-bold pr-2">{loss}</span>
                         <span className="text-2xl text-gray-800">{loss === 1 ? 'Loss' : 'Losses'}</span>
                     </div>
@@ -78,11 +82,17 @@ function Game() {
                 <div className="flex flex-col justify-center items-center">
                     <h2 className="pb-2">You</h2>
 
-                    <div onClick={() => handleUserChoice(1)} className="rounded-full h-24 w-24 bg-yellow-500 text-gray-700 flex justify-center items-center cursor-pointer mb-2">R</div>
+                    <div onClick={() => handleUserChoice(1)} className="rounded-full h-24 w-24 bg-yellow-500 text-gray-700 flex justify-center items-center cursor-pointer mb-2">
+                        <img src={rock} alt="rock"/>
+                    </div>
 
-                    <div onClick={() => handleUserChoice(2)} className="rounded-full h-24 w-24 bg-green-500 text-gray-700 flex justify-center items-center cursor-pointer mb-2">P</div>
+                    <div onClick={() => handleUserChoice(2)} className="rounded-full h-24 w-24 bg-green-500 text-gray-700 flex justify-center items-center cursor-pointer mb-2">
+                        <img src={paper} alt="paper"/>
+                    </div>
 
-                    <div onClick={() => handleUserChoice(3)} className="rounded-full h-24 w-24 bg-purple-500 text-gray-700 flex justify-center items-center cursor-pointer mb-2">S</div>
+                    <div onClick={() => handleUserChoice(3)} className="rounded-full h-24 w-24 bg-purple-500 text-gray-700 flex justify-center items-center cursor-pointer mb-2">
+                        <img src={scissors} alt="scissors"/>
+                    </div>
                 </div>
                 <div className="flex flex-col justify-center items-center">
                     <h2 className="pb-2">Computer</h2>
