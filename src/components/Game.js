@@ -82,22 +82,22 @@ function Game() {
                 <div className="flex flex-col justify-center items-center">
                     <h2 className="pb-2">You</h2>
 
-                    <div onClick={() => handleUserChoice(1)} className="rounded-full h-24 w-24 bg-yellow-500 text-gray-700 flex justify-center items-center cursor-pointer mb-2">
+                    <div onClick={() => handleUserChoice(1)} className="rounded-full h-24 w-24 bg-white border-yellow-500 text-gray-700 flex justify-center items-center cursor-pointer mb-2 rock choice">
                         <img src={rock} alt="rock"/>
                     </div>
 
-                    <div onClick={() => handleUserChoice(2)} className="rounded-full h-24 w-24 bg-green-500 text-gray-700 flex justify-center items-center cursor-pointer mb-2">
+                    <div onClick={() => handleUserChoice(2)} className="rounded-full h-24 w-24 bg-white border-green-500 text-gray-700 flex justify-center items-center cursor-pointer mb-2 paper choice">
                         <img src={paper} alt="paper"/>
                     </div>
 
-                    <div onClick={() => handleUserChoice(3)} className="rounded-full h-24 w-24 bg-purple-500 text-gray-700 flex justify-center items-center cursor-pointer mb-2">
+                    <div onClick={() => handleUserChoice(3)} className="rounded-full h-24 w-24 bg-white border-purple-500 text-gray-700 flex justify-center items-center cursor-pointer mb-2 scissors choice">
                         <img src={scissors} alt="scissors"/>
                     </div>
                 </div>
                 <div className="flex flex-col justify-center items-center">
                     <h2 className="pb-2">Computer</h2>
 
-                    <div className="rounded-full h-24 w-24 bg-black text-gray-300 flex justify-center items-center cursor-pointer">?</div>
+                    <div className="rounded-full h-24 w-24 bg-white border-black flex justify-center items-center cursor-pointer text-4xl computer font-bold choice">?</div>
                 </div>
             </div>
 
