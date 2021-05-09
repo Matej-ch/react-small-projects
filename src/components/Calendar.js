@@ -39,26 +39,33 @@ const Calendar = () => {
     }
 
     return (
-        <div className="calendar flex flex-col justify-center w-full h-full items-center space-y-2 bg-red-200">
-            <div className="date-chooser flex flex-row justify-between w-full max-w-sm">
-                <button className="date-chooser-button flex flex-col" onClick={() => setChoosingType('start')}>
-                    Start date <span>{startDate}</span>
-                </button>
-                <button className="date-chooser-button flex flex-col"  onClick={() => setChoosingType('end')}>
-                    End date <span>{endDate}</span>
-                </button>
-            </div>
+        <div className="flex flex-col justify-center w-full h-full items-center space-y-2 bg-red-200">
 
-            <div className="flex flex-row flex-wrap max-w-sm font-bold justify-between">
-                {calendarDates.map((day,index) => {
-                    const dayNum = day + 1;
-                    let isSelected = dayNum  === startDate || dayNum === endDate;
-
-                    return <button key={index} className={`calendar-day p-4 hover:bg-green-300 focus:bg-green-500  ${isSelected ? ' bg-green-500' : ''}`} onClick={() => updateDate(dayNum)}>
-                        {dayNum}
+            <div className="calendar">
+                <div className="date-chooser flex flex-row justify-between w-full max-w-sm">
+                    <button className="date-chooser-button flex flex-col" onClick={() => setChoosingType('start')}>
+                        Start date <span>{startDate}</span>
                     </button>
-                }) }
+                    <button className="date-chooser-button flex flex-col"  onClick={() => setChoosingType('end')}>
+                        End date <span>{endDate}</span>
+                    </button>
+                </div>
+
+                <div className="flex flex-row flex-wrap max-w-sm font-bold justify-start">
+                    <div>
+                        {calendarDates.map((day,index) => {
+                            const dayNum = day + 1;
+                            let isSelected = dayNum  === startDate || dayNum === endDate;
+
+                            return <button key={index} className={`calendar-day  ${isSelected ? ' calendar-day-selected' : ''}`} onClick={() => updateDate(dayNum)}>
+                                {dayNum}
+                            </button>
+                        }) }
+                    </div>
+                </div>
             </div>
+
+
         </div>
     );
 }
