@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/static/css/main.4cb2b830.chunk.css",
+    "main.js": "/static/js/main.90929164.chunk.js",
+    "main.js.map": "/static/js/main.90929164.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.5bc9267e.js",
+    "runtime-main.js.map": "/static/js/runtime-main.5bc9267e.js.map",
+    "static/js/2.de106222.chunk.js": "/static/js/2.de106222.chunk.js",
+    "static/js/2.de106222.chunk.js.map": "/static/js/2.de106222.chunk.js.map",
+    "static/js/3.1b026c62.chunk.js": "/static/js/3.1b026c62.chunk.js",
+    "static/js/3.1b026c62.chunk.js.map": "/static/js/3.1b026c62.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.4cb2b830.chunk.css.map": "/static/css/main.4cb2b830.chunk.css.map",
+    "static/js/2.de106222.chunk.js.LICENSE.txt": "/static/js/2.de106222.chunk.js.LICENSE.txt",
+    "static/media/icon-paper.8b57a6b1.svg": "/static/media/icon-paper.8b57a6b1.svg",
+    "static/media/icon-rock.476e90a9.svg": "/static/media/icon-rock.476e90a9.svg",
+    "static/media/icon-scissors.3b1a5d7e.svg": "/static/media/icon-scissors.3b1a5d7e.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.5bc9267e.js",
+    "static/js/2.de106222.chunk.js",
+    "static/css/main.4cb2b830.chunk.css",
+    "static/js/main.90929164.chunk.js"
+  ]
+}
