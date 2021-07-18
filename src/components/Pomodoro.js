@@ -11,6 +11,7 @@ const Pomodoro = () => {
     const [isRunning, setIsRunning] = useState(false);
     const [progress,setProgress] = useState(0);
     const [isEditing, setIsEditing] = useState(false);
+    const [rounds,setRounds] = useState(4);
 
     const minutes = padTime(Math.floor(timeLeft / 60));
     const seconds = padTime(timeLeft - minutes * 60);
@@ -62,8 +63,8 @@ const Pomodoro = () => {
     }
 
     return (
-        <div className="pomodoro flex flex-col justify-center w-full h-full items-center space-y-2 bg-blue-300">
-            <h2 className="font-semibold uppercase text-xl lg:text-3xl text-blue-900 text-opacity-80">{title}</h2>
+        <div className={`pomodoro flex flex-col justify-center w-full h-full items-center space-y-2 ${ isRunning ? 'pomodoro-run' : 'pomodoro-stop'}`}>
+            <h2 className="font-semibold uppercase text-xl lg:text-3xl text-blue-900 text-opacity-80 py-4 my-4">{title}</h2>
 
             {!isEditing ? (<div style={{ width: 200, height: 200 }} onDoubleClick={() => markAsEditing()}>
                 <CircularProgressbar minValue={0} maxValue={25*60} value={progress} text={`${minutes}:${seconds}`} strokeWidth={3} />

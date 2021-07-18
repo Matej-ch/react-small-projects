@@ -335,3 +335,11 @@ code {
     padding-right: 1rem;
     margin-bottom: 0.5rem;
 }
+
+.pomodoro-stop {
+    background: linear-gradient(0turn, rgba(244, 227, 168, 1) 0%, rgba(255,255, 255, 1) 67%)
+}
+
+.pomodoro-run {
+    background: linear-gradient(0turn, rgba(170, 203, 242, 1) 0%, rgba(255,255, 255, 1) 67%)
+}
