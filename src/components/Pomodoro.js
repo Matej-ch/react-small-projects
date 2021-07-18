@@ -2,6 +2,8 @@ import { useState, useRef } from 'react';
 import {padTime} from '../helpers.js';
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
+import { FiPauseCircle,FiPlayCircle,FiSettings,FiSkipForward,FiRefreshCcw } from "react-icons/fi";
+import { IconContext } from "react-icons";
 
 const Pomodoro = () => {
     const [title, setTitle] = useState('Start countdown!');
@@ -71,13 +73,17 @@ const Pomodoro = () => {
             </div>)
             }
 
-            <div className="buttons space-y-2 lg:space-x-2 w-full flex flex-col lg:flex-row justify-center items-center lg:items-baseline">
+            <div className="buttons space-y-2 lg:space-x-2 pt-8 w-full flex flex-col lg:flex-row justify-center items-center lg:items-baseline max-w-sm justify-between">
 
-                { !isRunning && <button onClick={startTimer} className="uppercase px-8 py-2 bg-yellow-300 text-yellow-600 max-w-max shadow-sm hover:shadow-lg font-semibold rounded-sm">Start</button> }
+                <IconContext.Provider value={{ className: "text-gray-700 text-2xl cursor-pointer" }}><FiSettings /></IconContext.Provider>
 
-                { isRunning && <button onClick={stopTimer} className="uppercase px-8 py-2 bg-yellow-300 text-yellow-600 max-w-max shadow-sm hover:shadow-lg font-semibold rounded-sm">Stop</button> }
+                { !isRunning && <IconContext.Provider value={{ className: "text-gray-700 text-2xl cursor-pointer" }}><FiPlayCircle onClick={startTimer}/></IconContext.Provider> }
 
-                <button onClick={resetTimer} className="uppercase px-8 py-2 bg-yellow-300 text-yellow-600 max-w-max shadow-sm hover:shadow-lg font-semibold rounded-sm">Reset</button>
+                { isRunning && <IconContext.Provider value={{ className: "text-gray-700 text-2xl cursor-pointer" }}><FiPauseCircle onClick={stopTimer}/></IconContext.Provider> }
+
+                <IconContext.Provider value={{ className: "text-gray-700 text-2xl cursor-pointer" }}><FiSkipForward /></IconContext.Provider>
+
+                <IconContext.Provider value={{ className: "text-gray-700 text-2xl cursor-pointer" }}><FiRefreshCcw  onClick={resetTimer} /></IconContext.Provider>
             </div>
 
         </div>
