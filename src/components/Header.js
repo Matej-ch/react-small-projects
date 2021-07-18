@@ -1,67 +1,48 @@
-import {Link} from "react-router-dom";
-const Header = (props) => {
+import {Nav, NavLink, Bars, NavMenu} from './NavbarParts';
+
+const Header = () => {
 
     return (
-        <header className="flex justify-between items-center w-full">
-            <div className="flex flex-row justify-start px-4 sm:px-6 w-full">
-                <div className="flex justify-between items-center py-2 md:justify-start md:space-x-10">
-                    <div>
-                        <Link to="/" className="font-semibold">Pomodoro</Link>
-                    </div>
-                    <div>
-                        <Link to="/editor" className="font-semibold">Markdown editor</Link>
-                    </div>
-                    <div>
-                        <Link to="/tabs" className="font-semibold">Tabs</Link>
-                    </div>
+        <>
+            <Nav>
+                <Bars />
+                <NavMenu>
+                    <NavLink to='/' activeStyle>
+                        Pomodoro
+                    </NavLink>
+                    <NavLink to='/editor' activeStyle>
+                        Markdown editor
+                    </NavLink>
+                    <NavLink to='/tabs' activeStyle>
+                        Tabs
+                    </NavLink>
+                    <NavLink to='/game' activeStyle>
+                        Rock/Paper/Scissors
+                    </NavLink>
 
-                    <div>
-                        <Link to="/game" className="font-semibold" >Rock/Paper/Scissors</Link>
-                    </div>
+                        <NavLink to="/link" activeStyle>Link</NavLink>
 
-                    <div>
-                        <Link to="/link" className="font-semibold">Link</Link>
-                    </div>
+                        <NavLink to="/gallery" activeStyle>Image gallery</NavLink>
 
-                    <div>
-                        <Link to="/gallery" className="font-semibold">Image gallery</Link>
-                    </div>
+                        <NavLink to="/trivia" activeStyle>Trivia</NavLink>
 
-                    <div>
-                        <Link to="/trivia" className="font-semibold">Trivia</Link>
-                    </div>
+                        <NavLink to="/speech" activeStyle>Speech</NavLink>
 
-                    <div>
-                        <Link to="/speech" className="font-semibold">Speech</Link>
-                    </div>
+                        <NavLink to="/calendar" activeStyle>Calendar</NavLink>
 
-                    <div>
-                        <Link to="/calendar" className="font-semibold">Calendar</Link>
-                    </div>
+                        <NavLink to="/message" activeStyle>Vis. messages</NavLink>
 
-                    <div>
-                        <Link to="/message" className="font-semibold">Vis. messages</Link>
-                    </div>
+                        <NavLink to="/form/signup" activeStyle>Form</NavLink>
 
-                    <div>
-                        <Link to="/form/signup" className="font-semibold">Form</Link>
-                    </div>
+                        <NavLink to="/memory" activeStyle>Memory game</NavLink>
 
-                    <div>
-                        <Link to="/memory" className="font-semibold">Memory game</Link>
-                    </div>
+                        <NavLink to="/math" activeStyle>Math cards</NavLink>
 
-                    <div>
-                        <Link to="/math" className="font-semibold">Math cards</Link>
-                    </div>
+                        <NavLink to="/typing" activeStyle>Typing</NavLink>
 
-                    <div>
-                        <Link to="/typing" className="font-semibold">Typing</Link>
-                    </div>
-
-                </div>
-            </div>
-        </header>
+                </NavMenu>
+            </Nav>
+        </>
     )
 }
 
