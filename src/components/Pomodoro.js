@@ -72,8 +72,8 @@ const Pomodoro = () => {
                 <CircularProgressbar minValue={0} maxValue={(mins * 60) + sec} value={progress} text={`${minutes}:${seconds}`} strokeWidth={3} />
             </div>) :
                 (<div style={{ width: 200, height: 200 }} >
-                <input type="number" step="1" min="1" placeholder="minutes" defaultValue={mins} onInput={ e => setMins(e.target.value) } />
-                <input type="number" step="1" min={0} max={60} defaultValue={sec}  onInput={ e => setSec(e.target.value) }/>
+                <input type="number" step="1" min="1" placeholder="minutes" defaultValue={mins} onInput={ e => {setMins(parseInt(e.target.value)); resetTimer()} } />
+                <input type="number" step="1" min={0} max={60} defaultValue={sec}  onInput={ e => { setSec(parseInt(e.target.value)); resetTimer()} }/>
                     <button onClick={() => markAsEditing()}>OK</button>
             </div>)
             }
