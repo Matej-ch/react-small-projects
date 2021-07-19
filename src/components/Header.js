@@ -7,38 +7,33 @@ const Header = () => {
             <Nav>
                 <Bars />
                 <NavMenu>
-                    <NavLink to='/' activeStyle>
-                        Pomodoro
-                    </NavLink>
-                    <NavLink to='/editor' activeStyle>
-                        Markdown editor
-                    </NavLink>
-                    <NavLink to='/tabs' activeStyle>
-                        Tabs
-                    </NavLink>
-                    <NavLink to='/game' activeStyle>
-                        Rock/Paper/Scissors
-                    </NavLink>
+                    <NavLink exact to='/'>Pomodoro</NavLink>
 
-                        <NavLink to="/link" activeStyle>Link</NavLink>
+                    <NavLink to='/editor'>Markdown editor</NavLink>
 
-                        <NavLink to="/gallery" activeStyle>Image gallery</NavLink>
+                    <NavLink to='/tabs'>Tabs</NavLink>
 
-                        <NavLink to="/trivia" activeStyle>Trivia</NavLink>
+                    <NavLink to='/game'>Rock/Paper/Scissors</NavLink>
 
-                        <NavLink to="/speech" activeStyle>Speech</NavLink>
+                    <NavLink to="/link">Link</NavLink>
 
-                        <NavLink to="/calendar" activeStyle>Calendar</NavLink>
+                    <NavLink to="/gallery">Image gallery</NavLink>
 
-                        <NavLink to="/message" activeStyle>Vis. messages</NavLink>
+                    <NavLink to="/trivia">Trivia</NavLink>
 
-                        <NavLink to="/form/signup" activeStyle>Form</NavLink>
+                    <NavLink to="/speech">Speech</NavLink>
 
-                        <NavLink to="/memory" activeStyle>Memory game</NavLink>
+                    <NavLink to="/calendar">Calendar</NavLink>
 
-                        <NavLink to="/math" activeStyle>Math cards</NavLink>
+                    <NavLink to="/message">Vis. messages</NavLink>
 
-                        <NavLink to="/typing" activeStyle>Typing</NavLink>
+                    <NavLink to="/form/signup">Form</NavLink>
+
+                    <NavLink to="/memory">Memory game</NavLink>
+
+                    <NavLink to="/math">Math cards</NavLink>
+
+                    <NavLink to="/typing">Typing</NavLink>
 
                 </NavMenu>
             </Nav>
