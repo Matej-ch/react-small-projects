@@ -7,7 +7,9 @@ import { IconContext } from "react-icons";
 
 const Pomodoro = () => {
     const [title, setTitle] = useState('Start countdown!');
-    const [timeLeft ,setTimeLeft] = useState(25*60);
+    const [mins, setMins] = useState(10);
+    const [sec, setSec] = useState(0);
+    const [timeLeft ,setTimeLeft] = useState((mins * 60) + sec);
     const [isRunning, setIsRunning] = useState(false);
     const [progress,setProgress] = useState(0);
     const [isEditing, setIsEditing] = useState(false);
@@ -50,7 +52,7 @@ const Pomodoro = () => {
     function resetTimer() {
         clearInterval(intervalRef.current);
         setTitle('Start countdown!');
-        setTimeLeft(25*60);
+        setTimeLeft((mins * 60) + sec);
         setProgress(0);
         intervalRef.current = null;
         setIsRunning(false);
@@ -67,10 +69,12 @@ const Pomodoro = () => {
             <h2 className="font-semibold uppercase text-xl lg:text-3xl text-blue-900 text-opacity-80 py-4 my-4">{title}</h2>
 
             {!isEditing ? (<div style={{ width: 200, height: 200 }} onDoubleClick={() => markAsEditing()}>
-                <CircularProgressbar minValue={0} maxValue={25*60} value={progress} text={`${minutes}:${seconds}`} strokeWidth={3} />
-            </div>) : (<div style={{ width: 200, height: 200 }}  onDoubleClick={() => markAsEditing()}>
-                <input type="number" step="1" min="1" placeholder="minutes" defaultValue={25}/>
-                <input type="number" step="1" min={0} max={60} defaultValue={0}/>
+                <CircularProgressbar minValue={0} maxValue={(mins * 60) + sec} value={progress} text={`${minutes}:${seconds}`} strokeWidth={3} />
+            </div>) :
+                (<div style={{ width: 200, height: 200 }} >
+                <input type="number" step="1" min="1" placeholder="minutes" defaultValue={mins} onInput={ e => setMins(e.target.value) } />
+                <input type="number" step="1" min={0} max={60} defaultValue={sec}  onInput={ e => setSec(e.target.value) }/>
+                    <button onClick={() => markAsEditing()}>OK</button>
             </div>)
             }
 
