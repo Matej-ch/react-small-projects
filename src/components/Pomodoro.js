@@ -4,6 +4,7 @@ import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { FiPauseCircle,FiPlayCircle,FiSettings,FiSkipForward,FiRefreshCcw } from "react-icons/fi";
 import { IconContext } from "react-icons";
+import {CSSTransition, SwitchTransition} from "react-transition-group";
 
 const Pomodoro = () => {
     const [title, setTitle] = useState('Start countdown!');
@@ -82,9 +83,23 @@ const Pomodoro = () => {
 
                 <IconContext.Provider value={{ className: "text-gray-700 text-2xl cursor-pointer" }}><FiSettings /></IconContext.Provider>
 
-                { !isRunning && <IconContext.Provider value={{ className: "text-gray-700 text-2xl cursor-pointer" }}><FiPlayCircle onClick={startTimer}/></IconContext.Provider> }
+                <SwitchTransition mode="out-in">
+                    <CSSTransition
+                        key={!isRunning}
+                        timeout={300}
+                        classNames="fade"
+                        unmountOnExit
+                    >
 
-                { isRunning && <IconContext.Provider value={{ className: "text-gray-700 text-2xl cursor-pointer" }}><FiPauseCircle onClick={stopTimer}/></IconContext.Provider> }
+                        <IconContext.Provider value={{ className: "text-gray-700 text-2xl cursor-pointer" }}>
+
+                            {!isRunning ? (<FiPlayCircle onClick={startTimer }/>) : (<FiPauseCircle onClick={stopTimer}/>)}
+
+                        </IconContext.Provider>
+
+                    </CSSTransition>
+                </SwitchTransition>
+
 
                 <IconContext.Provider value={{ className: "text-gray-700 text-2xl cursor-pointer" }}><FiSkipForward /></IconContext.Provider>
 

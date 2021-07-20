@@ -343,3 +343,20 @@ code {
 .pomodoro-run {
     background: linear-gradient(0turn, rgba(170, 203, 242, 1) 0%, rgba(255,255, 255, 1) 67%)
 }
+
+.fade-enter{
+    opacity: 0;
+}
+.fade-exit{
+    opacity: 1;
+}
+.fade-enter-active{
+    opacity: 1;
+}
+.fade-exit-active{
+    opacity: 0;
+}
+.fade-enter-active,
+.fade-exit-active{
+    transition: opacity 500ms;
+}
