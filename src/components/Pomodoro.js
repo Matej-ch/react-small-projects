@@ -5,6 +5,7 @@ import 'react-circular-progressbar/dist/styles.css';
 import { FiPauseCircle,FiPlayCircle,FiSettings,FiSkipForward,FiRefreshCcw } from "react-icons/fi";
 import { IconContext } from "react-icons";
 import {CSSTransition, SwitchTransition} from "react-transition-group";
+import {motion} from "framer-motion";
 
 const Pomodoro = () => {
     const [title, setTitle] = useState('Start countdown!');
@@ -15,6 +16,7 @@ const Pomodoro = () => {
     const [progress,setProgress] = useState(0);
     const [isEditing, setIsEditing] = useState(false);
     const [rounds,setRounds] = useState(4);
+    const [rotation, setRotation] = useState(0);
 
     const minutes = padTime(Math.floor(timeLeft / 60));
     const seconds = padTime(timeLeft - minutes * 60);
@@ -100,10 +102,12 @@ const Pomodoro = () => {
                     </CSSTransition>
                 </SwitchTransition>
 
-
                 <IconContext.Provider value={{ className: "text-gray-700 text-2xl cursor-pointer" }}><FiSkipForward /></IconContext.Provider>
 
-                <IconContext.Provider value={{ className: "text-gray-700 text-2xl cursor-pointer" }}><FiRefreshCcw  onClick={resetTimer} /></IconContext.Provider>
+                <motion.div animate={{rotate: rotation }} transition={{ duration: 0.25 }} onClick={() => setRotation(rotation + 180)}>
+                    <IconContext.Provider value={{ className: "text-gray-700 text-2xl cursor-pointer" }}><FiRefreshCcw  onClick={resetTimer} /></IconContext.Provider>
+                </motion.div>
+
             </div>
 
         </div>
