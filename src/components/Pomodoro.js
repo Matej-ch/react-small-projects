@@ -75,9 +75,18 @@ const Pomodoro = () => {
                 <CircularProgressbar minValue={0} maxValue={(mins * 60) + sec} value={progress} text={`${minutes}:${seconds}`} strokeWidth={3} />
             </div>) :
                 (<div style={{ width: 200, height: 200 }} >
-                <input type="number" step="1" min="1" placeholder="minutes" defaultValue={mins} onInput={ e => {setMins(parseInt(e.target.value)); resetTimer()} } />
-                <input type="number" step="1" min={0} max={60} defaultValue={sec}  onInput={ e => { setSec(parseInt(e.target.value)); resetTimer()} }/>
-                    <button onClick={() => markAsEditing()}>OK</button>
+
+                    <div className="webflow-style-input mb-2">
+                        <label className="text-gray-600 font-bold text-sm">Minutes</label>
+                        <input type="number" step="1" min="1" defaultValue={mins} onInput={ e => {setMins(parseInt(e.target.value)); resetTimer()} }/>
+                    </div>
+
+                    <div className="webflow-style-input mb-2">
+                        <label className="text-gray-600 font-bold text-sm">Seconds</label>
+                        <input type="number" step="1" min={0} max={60} defaultValue={sec}  onInput={ e => { setSec(parseInt(e.target.value)); resetTimer()} }/>
+                    </div>
+
+                    <button className="border-2 border-blue-600 rounded-lg px-3 py-2 text-blue-400 cursor-pointer hover:bg-blue-600 hover:text-blue-200" onClick={() => markAsEditing()}>OK</button>
             </div>)
             }
 

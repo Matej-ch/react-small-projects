@@ -360,3 +360,42 @@ code {
 .fade-exit-active{
     transition: opacity 500ms;
 }
+
+
+@keyframes gradient {
+    0%{background-position:0 0}
+    100%{background-position:100% 0}
+}
+
+.webflow-style-input {
+    position: relative;
+}
+
+.webflow-style-input::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
+    height: 2px;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+    background: linear-gradient(to right, #B294FF, #57E6E6, #FEFFB8, #57E6E6, #B294FF, #57E6E6) 0 0;
+    background-size: 500% auto;
+    animation: gradient 3s linear infinite;
+}
+
+.webflow-style-input input {
+    color: #BFD2FF;
+    line-height: 2rem;
+    vertical-align: middle;
+}
+
+.webflow-style-input input::-webkit-input-placeholder {
+    color: #7881A1;
+}
+
+.webflow-style-input button:hover {
+    color: #BFD2FF;
+}
