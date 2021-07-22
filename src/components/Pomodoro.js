@@ -55,6 +55,8 @@ const Pomodoro = () => {
     function resetTimer() {
         clearInterval(intervalRef.current);
         setTitle('Start countdown!');
+        console.log(mins);
+        console.log(sec);
         setTimeLeft((mins * 60) + sec);
         setProgress(0);
         intervalRef.current = null;
@@ -67,6 +69,22 @@ const Pomodoro = () => {
         });
     }
 
+    function handleSubmit(e) {
+        e.preventDefault();
+        setIsEditing(editing => {
+            return !editing;
+        });
+        resetTimer();
+    }
+
+    function handleMinutes(e) {
+        setMins(parseInt(e.target.value));
+    }
+
+    function handleSeconds(e) {
+        setSec(parseInt(e.target.value))
+    }
+
     return (
         <div className={`pomodoro flex flex-col justify-center w-full h-full items-center space-y-2 ${ isRunning ? 'pomodoro-run' : 'pomodoro-stop'}`}>
             <h2 className="font-semibold uppercase text-xl lg:text-3xl text-blue-900 text-opacity-80 py-4 my-4">{title}</h2>
@@ -76,17 +94,20 @@ const Pomodoro = () => {
             </div>) :
                 (<div style={{ width: 200, height: 200 }} >
 
-                    <div className="webflow-style-input mb-2">
-                        <label className="text-gray-600 font-bold text-sm">Minutes</label>
-                        <input type="number" step="1" min="1" defaultValue={mins} onInput={ e => {setMins(parseInt(e.target.value)); resetTimer()} }/>
-                    </div>
+                    <form onSubmit={handleSubmit}>
+                        <div className="webflow-style-input mb-2">
+                            <label className="text-gray-600 font-bold text-sm">Minutes</label>
+                            <input type="number" step="1" min="1" defaultValue={mins} onChange={handleMinutes}/>
+                        </div>
 
-                    <div className="webflow-style-input mb-2">
-                        <label className="text-gray-600 font-bold text-sm">Seconds</label>
-                        <input type="number" step="1" min={0} max={60} defaultValue={sec}  onInput={ e => { setSec(parseInt(e.target.value)); resetTimer()} }/>
-                    </div>
+                        <div className="webflow-style-input mb-2">
+                            <label className="text-gray-600 font-bold text-sm">Seconds</label>
+                            <input type="number" step="1" min={0} max={60} defaultValue={sec}  onChange={handleSeconds}/>
+                        </div>
 
-                    <button className="border-2 border-blue-600 rounded-lg px-3 py-2 text-blue-400 cursor-pointer hover:bg-blue-600 hover:text-blue-200" onClick={() => markAsEditing()}>OK</button>
+                        <input type="submit" value="OK" className="border-2 border-blue-600 rounded-lg px-3 py-2 text-blue-400 cursor-pointer hover:bg-blue-600 hover:text-blue-200" />
+                    </form>
+
             </div>)
             }
 
