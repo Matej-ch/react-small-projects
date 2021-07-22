@@ -120,13 +120,10 @@ const Pomodoro = () => {
                         key={!isRunning}
                         timeout={300}
                         classNames="fade"
-                        unmountOnExit
-                    >
+                        unmountOnExit>
 
                         <IconContext.Provider value={{ className: "text-gray-700 text-2xl cursor-pointer" }}>
-
                             {!isRunning ? (<FiPlayCircle onClick={startTimer }/>) : (<FiPauseCircle onClick={stopTimer}/>)}
-
                         </IconContext.Provider>
 
                     </CSSTransition>
@@ -138,6 +135,32 @@ const Pomodoro = () => {
                     <IconContext.Provider value={{ className: "text-gray-700 text-2xl cursor-pointer" }}><FiRefreshCcw  onClick={resetTimer} /></IconContext.Provider>
                 </motion.div>
 
+            </div>
+
+            <div className="max-w-md border border-r-2 bg-white">
+                <h2 className="text-center">Advanced
+                    <button>x</button>
+                </h2>
+                <form className="flex flex-row flex-wrap">
+                    <label>
+                        Focus time
+                        <input type="text"/>
+                    </label>
+                    <label>
+                        Short break
+                        <input type="text"/>
+                    </label>
+                    <label>
+                        Long break
+                        <input type="text"/>
+                    </label>
+                    <label>
+                        Rounds
+                        <input type="number" step={1} min={1}/>
+                    </label>
+
+                    <input type="submit" value="Confirm"/>
+                </form>
             </div>
 
         </div>
