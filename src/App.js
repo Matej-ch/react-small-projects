@@ -1,7 +1,6 @@
 import Pomodoro from "./components/Pomodoro";
 import MarkdownEditor from "./components/MarkdownEditor";
 import Header from "./components/Header";
-import BrowserTabs from "./components/BrowserTabs";
 import Game from "./components/Game";
 import Link from "./components/Link";
 import ImageGallery from "./components/ImageGallery";
@@ -27,8 +26,6 @@ function App() {
                     <Route exact path="/" component={Pomodoro}/>
 
                     <Route path="/editor" component={MarkdownEditor}/>
-
-                    <Route path="/tabs" component={BrowserTabs}/>
 
                     <Route path="/game" component={Game}/>
 

@@ -11,8 +11,6 @@ const Header = () => {
 
                     <NavLink to='/editor'>Markdown editor</NavLink>
 
-                    <NavLink to='/tabs'>Tabs</NavLink>
-
                     <NavLink to='/game'>Rock/Paper/Scissors</NavLink>
 
                     <NavLink to="/link">Link</NavLink>
