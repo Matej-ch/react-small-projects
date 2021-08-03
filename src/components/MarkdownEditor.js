@@ -26,7 +26,7 @@ const MarkdownEditor = () => {
                     <textarea onChange={handleChange } className="w-full" value={markdown} ref={textAreaRef} rows={1} style={{height: textAreaHeight}}/>
                 </div>
 
-                <ReactMarkdown className="h-3/4 p-4 w-1/2 bg-gray-100 rounded border border-gray-200 overflow-auto" source={markdown}/>
+                <ReactMarkdown className="p-4 w-1/2 bg-gray-100 rounded border border-gray-200 overflow-auto" source={markdown}/>
 
             </div>
         </div>
