@@ -344,6 +344,10 @@ code {
     background: linear-gradient(0turn, rgba(170, 203, 242, 1) 0%, rgba(255,255, 255, 1) 67%)
 }
 
+.markdown-bc {
+    background: linear-gradient(0turn, rgba(179, 244, 169, 1) 0%, rgba(255,255, 255, 1) 67%)
+}
+
 .fade-enter{
     opacity: 0;
 }
