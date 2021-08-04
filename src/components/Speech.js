@@ -3,6 +3,8 @@ import TimerSlot from "./TimerSlot";
 import {useStopwatch} from "react-timer-hook";
 import {useEffect, useCallback} from "react";
 import { useSpeechSynthesis } from "react-speech-kit"
+import {FiPlus} from "react-icons/fi";
+import {IconContext} from "react-icons";
 
 const Speech = () => {
 
@@ -67,7 +69,10 @@ const Speech = () => {
                     ))}
 
                     <div className={'flex flex-row justify-between'}>
-                        <button onClick={addTimer} className="border-2 border-yellow-600 rounded-sm px-3 py-2 text-yellow-400 cursor-pointer bg-yellow-600 hover:text-yellow-200 font-bold">Add</button>
+                        <button onClick={addTimer} className="border-2 border-yellow-600 rounded-sm px-3 py-2 text-yellow-400 cursor-pointer bg-yellow-600 hover:text-yellow-200 font-bold flex items-center">
+                            <FiPlus />
+                             Add
+                        </button>
 
                         {!isRunning && (<button onClick={start} className="border-2 border-green-600 rounded-sm px-3 py-2 text-green-400 cursor-pointer bg-green-600 hover:text-green-200 font-bold">Start</button>) }
 

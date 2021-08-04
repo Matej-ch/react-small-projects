@@ -33,20 +33,24 @@ const Trivia = () => {
     return (
         <div className="pomodoro flex flex-col justify-center w-full h-full items-center space-y-2 bg-yellow-100">
 
-            {isCorrect !== null && <ResultModal isCorrect = {isCorrect} question={question} getQuestion={handleNextQuestion}/>}
+            <div className={'w-1/6'}>
+                {isCorrect !== null && <ResultModal isCorrect = {isCorrect} question={question} getQuestion={handleNextQuestion}/>}
 
-            <div className="header">
-                <CategorySelector category={category} chooseCategory={setCategory}/>
-                <Scoreboard correct={correctScore} wrong={wrongScore}/>
+                <div className="header">
+                    <CategorySelector category={category} chooseCategory={setCategory}/>
+                    <Scoreboard correct={correctScore} wrong={wrongScore}/>
+                </div>
+
+                <div className="body">
+                    {question && <Question question={question} answerQuestion={handleQuestionAnswered} /> }
+                </div>
+
+                <div className="footer mt-3 border-t-2 w-full">
+                    <button onClick={handleNextQuestion}>Next question</button>
+                </div>
             </div>
 
-            <div className="body">
-                {question && <Question question={question} answerQuestion={handleQuestionAnswered} /> }
-            </div>
 
-            <div className="footer">
-                <button onClick={handleNextQuestion}>Next question</button>
-            </div>
         </div>
     )
 }
