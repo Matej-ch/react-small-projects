@@ -21,7 +21,7 @@ const Speech = () => {
 
     const {speak, speaking, supported} = useSpeechSynthesis();
 
-    const doReset = useCallback(() => reset(),[]);
+    const doReset = useCallback(() => reset(),[reset]);
     const doSpeak = useCallback((...p) => speak(...p),[]);
 
     useEffect(() => {
@@ -55,27 +55,31 @@ const Speech = () => {
     }
 
     return (
-        <div className="calendar flex flex-col justify-center w-full h-full items-center space-y-2 bg-yellow-200">
-            <h2 className="text-xl">Talk</h2>
+        <div className="flex flex-col justify-center w-full h-full items-center space-y-2 bg-gradient-to-r from-green-400 to-blue-500">
+            <div className="text-to-speech-wrapper">
+                <h2 className="text-xl">Talk</h2>
 
-            <div className="flex flex-col">
+                <div className="flex flex-col">
 
-                {timers.map((timer,index) => (
-                   <TimerSlot key={index} index={index} timer={timer} updateTimers={updateTimers}/>
-                ))}
+                    {timers.map((timer,index) => (
+                        <TimerSlot key={index} index={index} timer={timer} updateTimers={updateTimers}/>
+                    ))}
 
-                <button onClick={addTimer} className="uppercase px-8 py-2 bg-blue-300 text-blue-600 max-w-max shadow-sm hover:shadow-lg font-semibold rounded-sm">Add</button>
+                    <div className={'flex flex-row justify-between'}>
+                        <button onClick={addTimer} className="border-2 border-yellow-600 rounded-sm px-3 py-2 text-yellow-400 cursor-pointer bg-yellow-600 hover:text-yellow-200 font-bold">Add</button>
+
+                        {!isRunning && (<button onClick={start} className="border-2 border-green-600 rounded-lg px-3 py-2 text-green-400 cursor-pointer bg-green-600 hover:text-green-200 font-bold">Start</button>) }
+
+                        {isRunning && (<button onClick={reset} className="border-2 border-red-600 rounded-lg px-3 py-2 text-red-400 cursor-pointer bg-red-600 hover:text-red-200 font-bold">Stop</button>) }
+                    </div>
+
+                </div>
+
+                <h2 className="text-2xl pt-2 text-gray-800">Time: {seconds}s</h2>
+
+                {speaking && <p>Synthesizing speech</p>}
             </div>
 
-            <h2 className="text-4xl">{seconds}</h2>
-
-            <div className="flex flex-row space-x-1">
-                {!isRunning && (<button onClick={start} className="uppercase px-8 py-2 bg-pink-300 text-pink-600 max-w-max shadow-sm hover:shadow-lg font-semibold rounded-sm">Start</button>) }
-
-                {isRunning && (<button onClick={reset} className="uppercase px-8 py-2 bg-red-300 text-red-600 max-w-max shadow-sm hover:shadow-lg font-semibold rounded-sm">stop</button>) }
-            </div>
-
-            {speaking && <p>Synthesizing speech</p>}
         </div>
     )
 }

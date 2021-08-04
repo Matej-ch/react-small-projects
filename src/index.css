@@ -348,6 +348,10 @@ code {
     background: linear-gradient(0turn, rgba(179, 244, 169, 1) 0%, rgba(255,255, 255, 1) 67%)
 }
 
+.talk-bc {
+    background: linear-gradient(0turn, rgba(230, 241, 147, 1) 0%, rgba(255,255, 255, 1) 67%)
+}
+
 .fade-enter{
     opacity: 0;
 }
@@ -402,4 +406,14 @@ code {
 
 .webflow-style-input button:hover {
     color: #BFD2FF;
+}
+
+.text-to-speech-wrapper {
+    border: 1px solid #fff;
+    border-radius: 15px;
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
+    font-size: 2rem;
+    position: relative;
+    overflow: hidden;
+    padding: 1em;
 }
