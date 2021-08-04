@@ -19,15 +19,16 @@ const Speech = () => {
         reset,
     } = useStopwatch();
 
-    const {speak, speaking, supported} = useSpeechSynthesis();
+    const {speak, speaking, supported } = useSpeechSynthesis();
 
-    const doReset = useCallback(() => reset(),[reset]);
+    const doReset = useCallback(() => reset(),[]);
     const doSpeak = useCallback((...p) => speak(...p),[]);
 
     useEffect(() => {
         const foundTimer = timers.find(timer => { return timer.time === seconds });
 
         if(foundTimer) {
+            console.log(foundTimer.time);
             doSpeak({text: foundTimer.text});
         }
 
@@ -39,19 +40,19 @@ const Speech = () => {
 
     function updateTimers(index,time,text) {
         const newTimers = [...timers];
-        newTimers[index].time= time;
+        newTimers[index].time = time;
         newTimers[index].text = text;
 
         setTimers(newTimers);
     }
 
     function addTimer() {
-        const newTimers = [...timers,{time:100, 'text': 'new timer'}];
+        const newTimers = [...timers,{time:20, 'text': 'new timer'}];
         setTimers(newTimers)
     }
 
     if(!supported) {
-        return (<div>Your browser not supported</div>);
+        return (<div>Your browser is not supported for speech synthesizing</div>);
     }
 
     return (
@@ -68,16 +69,19 @@ const Speech = () => {
                     <div className={'flex flex-row justify-between'}>
                         <button onClick={addTimer} className="border-2 border-yellow-600 rounded-sm px-3 py-2 text-yellow-400 cursor-pointer bg-yellow-600 hover:text-yellow-200 font-bold">Add</button>
 
-                        {!isRunning && (<button onClick={start} className="border-2 border-green-600 rounded-lg px-3 py-2 text-green-400 cursor-pointer bg-green-600 hover:text-green-200 font-bold">Start</button>) }
+                        {!isRunning && (<button onClick={start} className="border-2 border-green-600 rounded-sm px-3 py-2 text-green-400 cursor-pointer bg-green-600 hover:text-green-200 font-bold">Start</button>) }
 
-                        {isRunning && (<button onClick={reset} className="border-2 border-red-600 rounded-lg px-3 py-2 text-red-400 cursor-pointer bg-red-600 hover:text-red-200 font-bold">Stop</button>) }
+                        {isRunning && (<button onClick={reset} className="border-2 border-red-600 rounded-sm px-3 py-2 text-red-400 cursor-pointer bg-red-600 hover:text-red-200 font-bold">Stop</button>) }
                     </div>
 
                 </div>
 
-                <h2 className="text-2xl pt-2 text-gray-800">Time: {seconds}s</h2>
+                <h2 className="text-2xl pt-2 text-gray-800 flex flex-row justify-between">
+                    <span>Time: {seconds}s</span>
+                    {speaking && <p>Synthesizing speech</p>}
+                </h2>
 
-                {speaking && <p>Synthesizing speech</p>}
+
             </div>
 
         </div>
