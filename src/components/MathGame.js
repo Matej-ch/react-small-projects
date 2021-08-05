@@ -17,7 +17,7 @@ const MathGame = () => {
     return (
         <DndProvider backend={HTML5Backend}>
             <div className="math w-full h-full bg-green-300 mx-auto flex justify-center">
-                <div className="math-card">
+                <div className="math-card my-4">
                     <Spot type="number" spot="numberOne" text={numberOne} handleDrop={handleDrop}/>
 
                     <Spot type="number" spot="numberTwo" text={numberTwo} handleDrop={handleDrop} />
@@ -27,7 +27,7 @@ const MathGame = () => {
                     <div className="total">{eval(`${numberOne}${operator}${numberTwo}`)}</div>
                 </div>
 
-                <div>
+                <div className={'py-4'}>
                     <div className="cards numbers">
                         {Array(10)
                             .fill(0)
@@ -58,7 +58,7 @@ function Card({type,text}) {
     }))
 
     return (
-        <div className="card" ref={dragRef} style={{opacity}}>
+        <div className="card rounded-sm p-4 hover:from-indigo-300 hover:to-indigo-400 bg-gradient-to-b from-indigo-400 to-indigo-500 cursor-pointer border-2 border-indigo-600" ref={dragRef} style={{opacity}}>
             {text}
         </div>
     )
