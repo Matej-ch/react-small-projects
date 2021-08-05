@@ -38,29 +38,39 @@ const TypingTester = () => {
     },[timeLeft])
 
     return (
-        <div>
-            <div>
-                <div className="timer">
-                    {(timeLeft / 1000).toFixed(2)}
+        <div className={'px-6'}>
+            <div className="timer p-2">
+                Remaining time: {(timeLeft / 1000).toFixed(2)}
+            </div>
+            <div className={'flex flex-row space-x-2'}>
+                <div className={'p-2'}>
+                    <button className={'text-center w-full bg-blue-900 hover:bg-blue-700 rounded-md text-white py-3 px-6 font-medium'} onClick={() => start()}>Start</button>
                 </div>
-                <button onClick={() => start()}>Start</button>
-                <button onClick={() => reset()}>Restart</button>
+                <div className={'p-2'}>
+                    <button className={'text-center w-full bg-blue-900 hover:bg-blue-700 rounded-md text-white py-3 px-6 font-medium'} onClick={() => reset()}>Restart</button>
+                </div>
             </div>
 
-            <p>{paragraph.split('').map((char,i) => {
+            <p className={'py-4'}>
+                {paragraph.split('').map((char,i) => {
 
-                let charClass = '';
-                const hasBeenTyped = typedText.length > i;
+                    let charClass = '';
+                    const hasBeenTyped = typedText.length > i;
 
-                if(hasBeenTyped) {
-                    charClass = typoIndexes.includes(i) ? 'text-red-500' : 'text-green-500';
-                }
+                    if(hasBeenTyped) {
+                        charClass = typoIndexes.includes(i) ? 'text-red-500' : 'text-green-500';
+                    }
 
-                return <span key={i} className={charClass}>{char}</span>
-            })}</p>
+                    return <span key={i} className={charClass}>{char}</span>
+                })}
+            </p>
 
             <form>
-                <textarea value={typedText} onChange={(e) => setTypedText(e.target.value)} name="" id="" cols="30" rows="10" />
+                <textarea placeholder={'Start typing here'}
+                          className="w-full max-w-max h-28 border-2 border-gray-200 rounded-md p-2 focus:outline-none focus:ring-4 focus:ring-indigo-50 focus:border-indigo-300"
+                          value={typedText}
+                          onChange={(e) => setTypedText(e.target.value)}
+                          name="" id="" cols="60" rows="10" />
             </form>
         </div>
     )
