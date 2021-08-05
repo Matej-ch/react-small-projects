@@ -17,6 +17,11 @@ const Trivia = () => {
 
     function handleQuestionAnswered(answer) {
         const isAnswerCorrect = answer === question.correct_answer;
+
+        console.log(answer);
+        console.log(question.correct_answer);
+        console.log(isAnswerCorrect);
+
         setIsCorrect(isAnswerCorrect);
 
         if(isAnswerCorrect) {
