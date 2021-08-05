@@ -37,18 +37,19 @@ const Trivia = () => {
             <div className={'w-1/6'}>
                 {isCorrect !== null && <ResultModal isCorrect = {isCorrect} question={question} getQuestion={handleNextQuestion}/>}
 
-                <div className="header">
+                <Scoreboard correct={correctScore} wrong={wrongScore}/>
+
+                <div className="header flex flex-row justify-between border-2 bg-gray-50 border-gray-100 p-2 mb-2 rounded-md">
                     <CategorySelector category={category} chooseCategory={setCategory}/>
                     <DifficultySelector difficulty={difficulty} chooseDifficulty={setDifficulty}/>
-                    <Scoreboard correct={correctScore} wrong={wrongScore}/>
                 </div>
 
-                <div className="body">
+                <div className="body bg-white border-2 border-gray-300 p-6 rounded-md tracking-wide shadow-lg">
                     {question && <Question question={question} answerQuestion={handleQuestionAnswered} /> }
                 </div>
 
-                <div className="footer mt-3 border-t-2 w-full">
-                    <button onClick={handleNextQuestion}>Next question</button>
+                <div className="footer mt-2 border-t-2 w-full">
+                    <button className={'text-center w-full bg-blue-900 hover:bg-blue-700 rounded-md text-white py-3 font-medium'} onClick={handleNextQuestion}>Next question</button>
                 </div>
             </div>
 
