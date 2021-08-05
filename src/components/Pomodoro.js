@@ -144,53 +144,57 @@ const Pomodoro = () => {
 
             </div>
 
-            <div className={`flex flex-col w-11/12 sm:w-5/6 lg:w-1/2 max-w-2xl mx-auto rounded-lg border border-gray-300 shadow-xl absolute ${!showAdvanced ? 'hidden' : '' }`}>
-                <div className="flex flex-row justify-between p-6 bg-white border-b border-gray-200 rounded-tl-lg rounded-tr-lg">
-                    <p className="font-semibold text-gray-800">Advanced settings</p>
-                    <button onClick={() => setShowAdvanced(false)}>
-                        <svg
-                            className="w-6 h-6"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth="2"
-                                d="M6 18L18 6M6 6l12 12"/>
-                        </svg>
-                    </button>
-                </div>
+            <motion.div animate={{ opacity:!showAdvanced ? 0 : 1 }}
+                        transition={{ duration: 0.25 }}
+                        className={`flex flex-col w-11/12 sm:w-5/6 lg:w-1/2 max-w-2xl mx-auto rounded-lg border border-gray-300 shadow-xl absolute ${!showAdvanced ? 'pointer-events-none' : ''}`}>
 
-                <form onSubmit={handleAdvancedSettingSubmit} className={`flex flex-col bg-gray-50 border-b rounded-bl-lg rounded-br-lg`}>
-                    <div className="py-2 px-4 flex flex-col">
-                        <label className="py-1 flex items-baseline">
-                            Focus time:&nbsp;&nbsp;
-                            <input type="text" className="p-2 mb-4 bg-white border border-gray-200 rounded shadow-sm"/>
-                        </label>
-                        <label className="py-1 flex items-baseline">
-                            Short break:&nbsp;
-                            <input type="text" className="p-2 mb-4 bg-white border border-gray-200 rounded shadow-sm"/>
-                        </label>
-                        <label className="py-1 flex items-baseline">
-                            Long break:&nbsp;&nbsp;
-                            <input type="text" className="p-2 mb-4 bg-white border border-gray-200 rounded shadow-sm"/>
-                        </label>
-                        <label className="py-1 flex items-baseline">
-                            Rounds:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <input type="number" step={1} min={1} className="p-2 mb-4 bg-white border border-gray-200 rounded shadow-sm"/>
-                        </label>
-                    </div>
-
-
-                    <div className="flex flex-row items-center justify-between p-5 bg-white border-b rounded-bl-lg rounded-br-lg">
-                        <button type="submit" value="submit" className="px-4 py-2 text-white font-semibold bg-blue-500 rounded">
-                            Save
+                    <div className="flex flex-row justify-between p-6 bg-white border-b border-gray-200 rounded-tl-lg rounded-tr-lg">
+                        <p className="font-semibold text-gray-800">Advanced settings</p>
+                        <button onClick={() => setShowAdvanced(false)}>
+                            <svg
+                                className="w-6 h-6"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth="2"
+                                    d="M6 18L18 6M6 6l12 12"/>
+                            </svg>
                         </button>
                     </div>
-                </form>
-            </div>
+
+                    <form onSubmit={handleAdvancedSettingSubmit} className={`flex flex-col bg-gray-50 border-b rounded-bl-lg rounded-br-lg`}>
+                        <div className="py-2 px-4 flex flex-col">
+                            <label className="py-1 flex items-baseline">
+                                Focus time:&nbsp;&nbsp;
+                                <input type="text" className="p-2 mb-4 bg-white border border-gray-200 rounded shadow-sm"/>
+                            </label>
+                            <label className="py-1 flex items-baseline">
+                                Short break:&nbsp;
+                                <input type="text" className="p-2 mb-4 bg-white border border-gray-200 rounded shadow-sm"/>
+                            </label>
+                            <label className="py-1 flex items-baseline">
+                                Long break:&nbsp;&nbsp;
+                                <input type="text" className="p-2 mb-4 bg-white border border-gray-200 rounded shadow-sm"/>
+                            </label>
+                            <label className="py-1 flex items-baseline">
+                                Rounds:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <input type="number" step={1} min={1} className="p-2 mb-4 bg-white border border-gray-200 rounded shadow-sm"/>
+                            </label>
+                        </div>
+
+
+                        <div className="flex flex-row items-center justify-between p-5 bg-white border-b rounded-bl-lg rounded-br-lg">
+                            <button type="submit" value="submit" className="px-4 py-2 text-white font-semibold bg-blue-500 rounded">
+                                Save
+                            </button>
+                        </div>
+                    </form>
+
+            </motion.div>
 
         </div>
     )
