@@ -17,6 +17,8 @@ const Pomodoro = () => {
     const [isEditing, setIsEditing] = useState(false);
     const [rounds,setRounds] = useState(4);
     const [rotation, setRotation] = useState(0);
+    const [settingRotation, setSettingRotation] = useState(0);
+    const [showAdvanced,setShowAdvanced] = useState(false);
 
     const minutes = padTime(Math.floor(timeLeft / 60));
     const seconds = padTime(timeLeft - minutes * 60);
@@ -55,8 +57,6 @@ const Pomodoro = () => {
     function resetTimer() {
         clearInterval(intervalRef.current);
         setTitle('Start countdown!');
-        console.log(mins);
-        console.log(sec);
         setTimeLeft((mins * 60) + sec);
         setProgress(0);
         intervalRef.current = null;
@@ -83,6 +83,11 @@ const Pomodoro = () => {
 
     function handleSeconds(e) {
         setSec(parseInt(e.target.value))
+    }
+
+    function handleAdvancedSettingSubmit(event) {
+        event.preventDefault();
+        setShowAdvanced(false);
     }
 
     return (
@@ -113,7 +118,9 @@ const Pomodoro = () => {
 
             <div className="buttons space-y-2 lg:space-x-2 pt-8 w-full flex flex-col lg:flex-row justify-center items-center lg:items-baseline max-w-sm justify-between">
 
-                <IconContext.Provider value={{ className: "text-gray-700 text-2xl cursor-pointer" }}><FiSettings /></IconContext.Provider>
+                <motion.div animate={{rotate: settingRotation }} transition={{ duration: 0.25 }} onClick={() => {setShowAdvanced(!showAdvanced);setSettingRotation(settingRotation + 180)}}>
+                    <IconContext.Provider value={{ className: "text-gray-700 text-2xl cursor-pointer" }}><FiSettings /></IconContext.Provider>
+                </motion.div>
 
                 <SwitchTransition mode="out-in">
                     <CSSTransition
@@ -137,29 +144,51 @@ const Pomodoro = () => {
 
             </div>
 
-            <div className="max-w-md border border-r-2 bg-white">
-                <h2 className="text-center">Advanced
-                    <button>x</button>
-                </h2>
-                <form className="flex flex-row flex-wrap">
-                    <label>
-                        Focus time
-                        <input type="text"/>
-                    </label>
-                    <label>
-                        Short break
-                        <input type="text"/>
-                    </label>
-                    <label>
-                        Long break
-                        <input type="text"/>
-                    </label>
-                    <label>
-                        Rounds
-                        <input type="number" step={1} min={1}/>
-                    </label>
+            <div className={`flex flex-col w-11/12 sm:w-5/6 lg:w-1/2 max-w-2xl mx-auto rounded-lg border border-gray-300 shadow-xl absolute ${!showAdvanced ? 'hidden' : '' }`}>
+                <div className="flex flex-row justify-between p-6 bg-white border-b border-gray-200 rounded-tl-lg rounded-tr-lg">
+                    <p className="font-semibold text-gray-800">Advanced settings</p>
+                    <button onClick={() => setShowAdvanced(false)}>
+                        <svg
+                            className="w-6 h-6"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                d="M6 18L18 6M6 6l12 12"/>
+                        </svg>
+                    </button>
+                </div>
 
-                    <input type="submit" value="Confirm"/>
+                <form onSubmit={handleAdvancedSettingSubmit} className={`flex flex-col bg-gray-50 border-b rounded-bl-lg rounded-br-lg`}>
+                    <div className="py-2 px-4 flex flex-col">
+                        <label className="py-1 flex items-baseline">
+                            Focus time:&nbsp;&nbsp;
+                            <input type="text" className="p-2 mb-4 bg-white border border-gray-200 rounded shadow-sm"/>
+                        </label>
+                        <label className="py-1 flex items-baseline">
+                            Short break:&nbsp;
+                            <input type="text" className="p-2 mb-4 bg-white border border-gray-200 rounded shadow-sm"/>
+                        </label>
+                        <label className="py-1 flex items-baseline">
+                            Long break:&nbsp;&nbsp;
+                            <input type="text" className="p-2 mb-4 bg-white border border-gray-200 rounded shadow-sm"/>
+                        </label>
+                        <label className="py-1 flex items-baseline">
+                            Rounds:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type="number" step={1} min={1} className="p-2 mb-4 bg-white border border-gray-200 rounded shadow-sm"/>
+                        </label>
+                    </div>
+
+
+                    <div className="flex flex-row items-center justify-between p-5 bg-white border-b rounded-bl-lg rounded-br-lg">
+                        <button type="submit" value="submit" className="px-4 py-2 text-white font-semibold bg-blue-500 rounded">
+                            Save
+                        </button>
+                    </div>
                 </form>
             </div>
 
