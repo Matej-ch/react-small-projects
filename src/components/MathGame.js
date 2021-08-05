@@ -16,7 +16,7 @@ const MathGame = () => {
 
     return (
         <DndProvider backend={HTML5Backend}>
-            <div className="math w-full h-full bg-green-300 mx-auto flex justify-center ">
+            <div className="math w-full h-full bg-gradient-to-b from-green-300 to-green-500 mx-auto flex justify-center ">
                 <div className="math-card my-4 bg-gradient-to-b from-gray-800 to-gray-600 border-2 border-gray-700">
                     <Spot type="number" spot="numberOne" text={numberOne} handleDrop={handleDrop}/>
 
