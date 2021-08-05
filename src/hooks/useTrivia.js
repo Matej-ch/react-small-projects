@@ -4,6 +4,7 @@ export default function useTrivia() {
 
     const [question,setQuestion] = useState(null);
     const [category,setCategory] = useState('any');
+    const [difficulty,setDifficulty] = useState('any');
 
     const getQuestion = useCallback(() => {
 
@@ -11,8 +12,11 @@ export default function useTrivia() {
         if(category !== 'any') {
             url += `&category=${category}`;
         }
+        if(difficulty !== 'any') {
+            url += `&difficulty=${difficulty}`;
+        }
         fetch(url).then(res => res.json()).then(data => {setQuestion(data.results[0])});
-    },[category])
+    },[category,difficulty])
 
 
     useEffect(() => {
@@ -20,5 +24,5 @@ export default function useTrivia() {
     },[getQuestion,category]);
 
 
-    return {question,getQuestion,category,setCategory};
+    return {question,getQuestion,category,setCategory,difficulty,setDifficulty};
 }

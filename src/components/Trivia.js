@@ -1,4 +1,5 @@
 import CategorySelector from "./CategorySelector";
+import DifficultySelector from "./DifficultySelector";
 import Scoreboard from "./Scoreboard";
 import Question from "./Question";
 import ResultModal from "./ResultModal";
@@ -8,7 +9,7 @@ import useTrivia from "../hooks/useTrivia";
 
 const Trivia = () => {
 
-    const {question,getQuestion,category,setCategory} = useTrivia();
+    const {question,getQuestion,category,setCategory,difficulty,setDifficulty} = useTrivia();
 
     const [isCorrect,setIsCorrect] = useState(null);
     const [correctScore, setCorrectScore] = useState(0);
@@ -38,6 +39,7 @@ const Trivia = () => {
 
                 <div className="header">
                     <CategorySelector category={category} chooseCategory={setCategory}/>
+                    <DifficultySelector difficulty={difficulty} chooseDifficulty={setDifficulty}/>
                     <Scoreboard correct={correctScore} wrong={wrongScore}/>
                 </div>
 
