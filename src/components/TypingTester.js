@@ -1,9 +1,6 @@
 import { useState,useEffect } from 'react';
 import useCountDown from "react-countdown-hook/src";
 
-const secondsToCount = 10;
-const paragraph = `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus alias commodi consectetur dicta dolor esse, fuga id labore laudantium maiores maxime necessitatibus numquam pariatur quis quisquam sapiente similique sint ullam.`;
-
 function findTypos(str1,str2) {
     let typos = [];
 
@@ -15,9 +12,13 @@ function findTypos(str1,str2) {
 }
 
 const TypingTester = () => {
+    const [secondsToCount,setSecondsToCount] = useState(10);
+    const [paragraph,setParagraph] = useState('This is a testing text, double click to change');
     const [typedText, setTypedText] = useState('')
     const [typoIndexes, setTypoIndexes] = useState([]);
     const [timeLeft, { start, reset }] = useCountDown(secondsToCount * 1000, 100);
+    const [editing, setEditing] = useState(false);
+    const [editSec, setEditSec] = useState(false);
 
     //finding typos
     useEffect(() => {
@@ -37,11 +38,38 @@ const TypingTester = () => {
 
     },[timeLeft])
 
+    function markAsEditing() {
+        setEditing(editing => {
+            return !editing;
+        });
+    }
+
+    function markAsEditingSec() {
+        setEditSec(editing => {
+            return !editing;
+        });
+    }
+
+    function handleParagraph(e) {
+        setParagraph(e.target.value);
+    }
+
+    function handleSeconds(e) {
+        setSecondsToCount(parseInt(e.target.value));
+    }
+
     return (
         <div className={'px-6'}>
-            <div className="timer p-2">
-                Remaining time: {(timeLeft / 1000).toFixed(2)}
-            </div>
+            { editSec ? (
+                <div className="timer p-2" onDoubleClick={() => markAsEditingSec()}>
+                    <input type="number" step={'1'} defaultValue={secondsToCount}  onChange={handleSeconds} />
+                </div>
+            ) : (
+                <div className="timer p-2" onDoubleClick={() => markAsEditingSec()}>
+                    Remaining time: {(timeLeft / 1000).toFixed(2)}
+                </div>
+            ) }
+
             <div className={'flex flex-row space-x-2'}>
                 <div className={'p-2'}>
                     <button className={'text-center w-full bg-blue-900 hover:bg-blue-700 rounded-md text-white py-3 px-6 font-medium'} onClick={() => start()}>Start</button>
@@ -51,19 +79,26 @@ const TypingTester = () => {
                 </div>
             </div>
 
-            <p className={'py-4'}>
-                {paragraph.split('').map((char,i) => {
+            {editing ? (
+                <p className={'py-4'} onDoubleClick={() => markAsEditing()}>
+                    <input type="text" defaultValue={paragraph} className={'rounded-md p-2 w-full border mr-0 text-gray-800 border-gray-200 bg-white'} onChange={handleParagraph}/>
+                </p>
+            ) : (
+                <p className={'py-4'} onDoubleClick={() => markAsEditing()}>
+                    {paragraph.split('').map((char,i) => {
 
-                    let charClass = '';
-                    const hasBeenTyped = typedText.length > i;
+                        let charClass = '';
+                        const hasBeenTyped = typedText.length > i;
 
-                    if(hasBeenTyped) {
-                        charClass = typoIndexes.includes(i) ? 'text-red-500' : 'text-green-500';
-                    }
+                        if(hasBeenTyped) {
+                            charClass = typoIndexes.includes(i) ? 'text-red-500' : 'text-green-500';
+                        }
 
-                    return <span key={i} className={charClass}>{char}</span>
-                })}
-            </p>
+                        return <span key={i} className={charClass}>{char}</span>
+                    })}
+                </p>
+            )}
+
 
             <form>
                 <textarea placeholder={'Start typing here'}

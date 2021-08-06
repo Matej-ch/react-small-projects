@@ -16,34 +16,37 @@ const MathGame = () => {
 
     return (
         <DndProvider backend={HTML5Backend}>
-            <div className="math w-full h-full bg-gradient-to-b from-green-300 to-green-500 mx-auto flex justify-center ">
-                <div className="math-card my-4 bg-gradient-to-b from-gray-800 to-gray-600 border-2 border-gray-700">
-                    <Spot type="number" spot="numberOne" text={numberOne} handleDrop={handleDrop}/>
+            <div className={'w-full h-full bg-gradient-to-b from-green-300 to-green-500'}>
+                <div className="math  mx-auto flex justify-center ">
+                    <div className="math-card my-4 bg-gradient-to-b from-gray-800 to-gray-600 border-2 border-gray-700">
+                        <Spot type="number" spot="numberOne" text={numberOne} handleDrop={handleDrop}/>
 
-                    <Spot type="number" spot="numberTwo" text={numberTwo} handleDrop={handleDrop} />
+                        <Spot type="number" spot="numberTwo" text={numberTwo} handleDrop={handleDrop} />
 
-                    <Spot type="operator" spot="operator" text={operator} handleDrop={handleDrop} />
+                        <Spot type="operator" spot="operator" text={operator} handleDrop={handleDrop} />
 
-                    <div className="total">{eval(`${numberOne}${operator}${numberTwo}`)}</div>
-                </div>
-
-                <div className={'py-4'}>
-                    <div className="cards numbers">
-                        {Array(10)
-                            .fill(0)
-                            .map((n, i) => (
-
-                                <Card key={i} text={i + 1} type="number" />
-                            ))}
+                        <div className="total">{eval(`${numberOne}${operator}${numberTwo}`)}</div>
                     </div>
 
-                    <div className="cards operators">
-                        {['*', '-', '+', '/'].map((o, i) => (
-                            <Card text={o} key={i}  type="operator"/>
-                        ))}
+                    <div className={'py-4'}>
+                        <div className="cards numbers">
+                            {Array(10)
+                                .fill(0)
+                                .map((n, i) => (
+
+                                    <Card key={i} text={i + 1} type="number" />
+                                ))}
+                        </div>
+
+                        <div className="cards operators">
+                            {['*', '-', '+', '/'].map((o, i) => (
+                                <Card text={o} key={i}  type="operator"/>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </div>
+
         </DndProvider>
     );
 };
