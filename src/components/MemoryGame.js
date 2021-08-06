@@ -1,15 +1,7 @@
 import shuffle from 'lodash.shuffle'
 import { useState,useEffect } from 'react'
+import cards from "../cards";
 
-/**@todo  move to file */
-const cards = [
-    {id:1, name: 'A' },
-    {id:2, name: 'B' },
-    {id:3, name: 'C' },
-    {id:4, name: 'D' },
-    {id:5, name: 'E' },
-    {id:6, name: 'F' }
-]
 
 const doubleCards = shuffle([...cards,...cards]);
 
@@ -45,11 +37,8 @@ const MemoryGame = () => {
     },[matched])
 
     return (
-        <div className="memory-game">
-            <p>
-                {moves} <strong>moves</strong>
-            </p>
-            <div className="cards">
+        <div className="memory-game p-4">
+            <div className="cards max-w-md">
                 {doubleCards.map((card,index) => {
                     let isFlipped = false;
 
@@ -60,6 +49,10 @@ const MemoryGame = () => {
                     return (<Card card={card} index={index}  key={index} isFlipped={isFlipped} flipCard={flipCard}/>)
                 })}
             </div>
+
+            <p className={'text-4xl pt-6 max-w-md mx-auto px-4'}>
+                {moves} <strong>moves</strong>
+            </p>
         </div>
     )
 }
@@ -68,10 +61,10 @@ function Card({index,card,isFlipped, flipCard}) {
     return (
         <button onClick={() => flipCard(index)} className={`memory-card h-32 w-32 ${isFlipped ? 'flipped' : ''}`}>
             <div className="inner">
-                <div className="front bg-blue-300">
+                <div className="front bg-gradient-to-b from-blue-800 to-blue-600 font-bold text-6xl text-white">
                     {card.name}
                 </div>
-                <div className="back"> ? </div>
+                <div className="back bg-gradient-to-b from-red-800 to-red-600 hover:from-red-600 hover:to-red-400 font-bold text-6xl text-white"> {isFlipped ? '' : '?'} </div>
             </div>
         </button>
     );

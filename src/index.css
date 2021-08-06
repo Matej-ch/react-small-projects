@@ -162,20 +162,14 @@ code {
 }
 
 .memory-card .front {
-    background: #fff;
     transform: rotateY(180deg);
 }
 
 .memory-card .back {
-    background: #ae1c35;
-    color: #d6aeb5;
-    font-size: 100px;
     transition: 0.3s ease all;
 }
 
 .memory-card .back:hover {
-    background: #cc2f49;
-    color: #fff;
     transform: scale(1.02);
 }
 
@@ -230,9 +224,11 @@ code {
 }
 
 .cards {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 8px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 auto;
 }
 
 .card {
