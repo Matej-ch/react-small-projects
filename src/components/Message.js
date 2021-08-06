@@ -1,21 +1,14 @@
 import {useState} from "react";
 import useInterval from "@use-it/interval";
-
-const messages = [
-    {text: 'first message'},
-    {text: 'second message'},
-    {text: 'this ia test'},
-    {text: 'hello world'},
-]
+import messages from "../messages";
 
 function Typing({even}) {
     return (
-        <div className={`typing ${even ? 'is-right' : 'is-left'}`}>
-            <div className="dots">
-                dots here
-                <div/>
-                <div/>
-                <div/>
+        <div className={`flex ${even ? 'justify-end' : 'justify-start'}`}>
+            <div className="typing">
+                <div className="typing__dot"/>
+                <div className="typing__dot"/>
+                <div className="typing__dot"/>
             </div>
         </div>
     )
@@ -30,29 +23,29 @@ const Message = () => {
     },2000)
 
     return (
-        <div className="pomodoro flex flex-col justify-center w-full h-full items-center space-y-2 bg-gray-300">
+        <div className="flex flex-col justify-center w-full h-full items-center space-y-2 bg-gray-300">
+            <div className={'max-w-lg'}>
+                {
+                    messages.map((message,index) => {
 
-            {
-                messages.map((message,index) => {
+                        const even = index % 2 === 0;
 
-                    const even = index % 2 === 0;
+                        if(messageToShow  +1 === index) {
+                            return <Typing key={index} even={even} />
+                        }
 
-                    if(messageToShow  +1 === index) {
-                        return <Typing key={index} even={even} />
-                    }
+                        if(index > messageToShow) return <div key={index} />
 
-                    if(index > messageToShow) return <div key={index} />
-
-                    return (
-                        <div key={index} className="message flex flex-row py-4">
-                            <div className="avatar px-1"> :D </div>
-                            <div className="px-2">{message.text}</div>
-                            <div className="avatar px-1"> :P </div>
-                        </div>
-                    )
-                })
-            }
-
+                        return (
+                            <div key={index} className="flex flex-row py-4">
+                                <div className="avatar px-1"> &#127772; </div>
+                                <div className="px-2">{message.text}</div>
+                                <div className="avatar px-1"> &#127771; </div>
+                            </div>
+                        )
+                    })
+                }
+            </div>
         </div>
     )
 }

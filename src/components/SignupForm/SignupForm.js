@@ -12,7 +12,7 @@ export default function SignupForm() {
 
     return (
         <SignupFormProvider>
-            <div className="signup-form">
+            <div className="signup-form max-w-6xl mx-auto pt-4">
                 <FormSteps />
 
                 <AnimatePresence>

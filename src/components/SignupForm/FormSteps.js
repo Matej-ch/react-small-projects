@@ -12,7 +12,7 @@ export default function FormSteps() {
     const isSocialDone = !isEmpty(social);
 
     return (
-       <div className="step-links">
+       <div className="step-links text-xl font-bold">
 
            <NavLink to="/form/profile" className="p-2">
                {isProfileDone ? 'Y' : 'N' } Signup form
