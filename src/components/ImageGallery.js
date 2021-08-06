@@ -7,7 +7,7 @@ const accessKey = process.env.REACT_APP_UNSPLASH_KEY;
 const ImageGallery = () => {
 
     const [images,setImages] = useState([]);
-    const [page, setPage] = useState(1);
+    const [page, setPage] = useState(2);
     const [query, setQuery] = useState('');
 
     const fetchData = useCallback(() => {
@@ -70,11 +70,11 @@ const ImageGallery = () => {
                 next={() => setPage((page) => page + 1) }
                 hasMore={true}
                 loader={<h4 className="text-center">Loading...</h4>}>
-                <div className="image-grid grid max-w-full mx-auto lg:px-40">
+                <div className="image-grid grid max-w-7xl mx-auto lg:px-20">
                     {
                         images.map((image,index) => (
                             <a className="image" href={image.links.html} key={index} target="_blank" rel="noopener noreferrer">
-                                <img className="shadow-lg rounded w-full h-full align-middle border-none object-cover" src={image.urls.regular} alt="Cat"/>
+                                <img className="shadow-lg rounded w-full h-full align-middle border-none object-cover" src={image.urls.regular} alt={image.alt_description}/>
                             </a>
                         ))
                     }

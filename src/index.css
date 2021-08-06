@@ -405,3 +405,9 @@ code {
     overflow: hidden;
     padding: 1em;
 }
+
+.numbers,.operators {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+}

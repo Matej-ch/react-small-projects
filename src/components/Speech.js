@@ -4,7 +4,6 @@ import {useStopwatch} from "react-timer-hook";
 import {useEffect, useCallback} from "react";
 import { useSpeechSynthesis } from "react-speech-kit"
 import {FiPlus} from "react-icons/fi";
-import {IconContext} from "react-icons";
 
 const Speech = () => {
 

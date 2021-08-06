@@ -29,7 +29,7 @@ const MathGame = () => {
                     </div>
 
                     <div className={'py-4'}>
-                        <div className="cards numbers">
+                        <div className="numbers mb-6">
                             {Array(10)
                                 .fill(0)
                                 .map((n, i) => (
@@ -38,7 +38,7 @@ const MathGame = () => {
                                 ))}
                         </div>
 
-                        <div className="cards operators">
+                        <div className="operators">
                             {['*', '-', '+', '/'].map((o, i) => (
                                 <Card text={o} key={i}  type="operator"/>
                             ))}
