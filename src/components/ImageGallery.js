@@ -54,7 +54,7 @@ const ImageGallery = () => {
 
     return (
         <div className="py-8">
-            <h1 className="text-center pb-">Image gallery</h1>
+            <h1 className="text-center">Image gallery</h1>
 
             <form onSubmit={searchPhotos} className="m-4 flex justify-center">
                 <input value={query} onChange={e => setQuery(e.target.value)}

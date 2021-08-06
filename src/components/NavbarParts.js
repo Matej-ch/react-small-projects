@@ -4,7 +4,6 @@ import styled from 'styled-components';
 
 export const Nav = styled.nav`
   background: #000;
-  height: 80px;
   display: flex;
   z-index: 10;
   justify-content: flex-start;
@@ -15,7 +14,7 @@ export const NavLink = styled(Link)`
   display: flex;
   align-items: center;
   text-decoration: none;
-  padding: 0 1rem;
+  padding: 1rem 1rem;
   height: 100%;
   cursor: pointer;
   &.active {
