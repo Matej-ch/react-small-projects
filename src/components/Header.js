@@ -25,7 +25,7 @@ const Header = () => {
 
                     <NavLink to="/message">Vis. messages</NavLink>
 
-                    <NavLink to="/form/signup">Form</NavLink>
+                    <NavLink to="/form/profile">Form</NavLink>
 
                     <NavLink to="/memory">Memory game</NavLink>
 
