@@ -36,6 +36,12 @@ const MemoryGame = () => {
         if(matched.length === cards.length) {alert('Winner winner chicken dinner')}
     },[matched])
 
+    function reset() {
+        setMoves(0);
+        setOpened([]);
+        setMatched([]);
+    }
+
     return (
         <div className="memory-game p-4">
             <div className="cards max-w-md">
@@ -50,9 +56,10 @@ const MemoryGame = () => {
                 })}
             </div>
 
-            <p className={'text-4xl pt-6 max-w-md mx-auto px-4'}>
-                {moves} <strong>moves</strong>
-            </p>
+            <div className={'text-4xl pt-6 max-w-md mx-auto px-4 flex justify-between'}>
+                <span>{moves} <strong>moves</strong></span>
+                <button className={'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-base'} onClick={() => reset()}>RESET</button>
+            </div>
         </div>
     )
 }
