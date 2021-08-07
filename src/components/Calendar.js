@@ -39,7 +39,7 @@ const Calendar = () => {
     }
 
     return (
-        <div className="flex flex-col justify-center w-full h-full items-center space-y-2 bg-red-200">
+        <div className="flex flex-col justify-center w-full h-full items-center space-y-2 bg-gradient-to-b from-red-200 to-red-300">
 
             <div className="calendar">
                 <div className="date-chooser flex flex-row justify-between w-full max-w-sm">
