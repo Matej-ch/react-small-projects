@@ -5,9 +5,9 @@ import paper from '../images/icon-paper.svg'
 import scissors from '../images/icon-scissors.svg'
 
 const choices = [
-    {id:1,name:'rock',icon:rock,losesTo: 2 },
-    {id:2,name:'Paper',icon:paper,losesTo: 3 },
-    {id:3,name:'Scissors',icon:scissors,losesTo: 1},
+    { id:1,name:'Rock', icon:rock, losesTo: 2 },
+    { id:2,name:'Paper', icon:paper, losesTo: 3 },
+    { id:3,name:'Scissors', icon:scissors, losesTo: 1 },
 ];
 
 function Game() {
@@ -24,6 +24,7 @@ function Game() {
     function handleUserChoice(choice) {
         const chosenChoice = choices.find(c => c.id === choice);
         setUserChoice(chosenChoice);
+        setComputerChoice(choices[Math.floor(Math.random() * choices.length)])
 
         if(chosenChoice.losesTo === computerChoice.id) {
             setLoss( losses => losses + 1);
@@ -40,6 +41,8 @@ function Game() {
         setGameState(null);
         setUserChoice(null);
 
+        setWins(0);
+        setLoss(0);
         setComputerChoice(choices[Math.floor(Math.random() * choices.length)])
     }
 
@@ -47,14 +50,14 @@ function Game() {
         <div className="flex flex-col justify-center w-full h-screen items-center bg-purple-300">
 
             {gameState && <div
-                className="bg-indigo-100 border-t-4 border-indigo rounded-b text-indigo-900 px-4 py-3 shadow-md my-2">
+                className="bg-indigo-100 border-t-4 border-indigo rounded text-indigo-900 px-4 py-3 shadow-md my-2 absolute">
 
                 <div className="flex flex-row justify-between items-baseline space-x-2">
-                    <p className="text-sm">{userChoice.name}</p>
+                    <p className="text-sm"><img src={userChoice.icon} /></p>
                     {gameState === 'win' && <h1>You won!</h1>}
                     {gameState === 'lose' && <h1>You lost!</h1>}
                     {gameState === 'draw' && <h1>You tied!</h1>}
-                    <p className="text-sm">{computerChoice.name}</p>
+                    <p className="text-sm"><img src={computerChoice.icon} /></p>
                 </div>
 
                 <div className="text-center pt-4">
@@ -64,8 +67,8 @@ function Game() {
             </div>}
 
             <div className="flex flex-col items-center">
-                <h1 className="text-gray-800 px-8 py-4 text-3xl">Rock. Paper. Scissors</h1>
-                <div className="flex flex-row space-x-4 px-2">
+                <h1 className="text-gray-800 p-4 text-3xl">Rock. Paper. Scissors</h1>
+                <div className="flex flex-row space-x-4 p-4 w-full justify-between">
                     <div className="flex items-baseline">
                         <span className="text-green-800 text-5xl font-bold pr-2">{wins}</span>
                         <span className="text-2xl text-gray-800">{wins ? 'Win' : 'Wins'}</span>
@@ -82,22 +85,25 @@ function Game() {
                 <div className="flex flex-col justify-center items-center">
                     <h2 className="pb-2">You</h2>
 
-                    <div onClick={() => handleUserChoice(1)} className="rounded-full h-24 w-24 bg-white border-yellow-500 text-gray-700 flex justify-center items-center cursor-pointer mb-2 rock choice">
+                    <div onClick={() => handleUserChoice(1)}
+                         className="rounded-full h-24 w-24 bg-white border-yellow-500 hover:bg-yellow-300 text-gray-700 flex justify-center items-center cursor-pointer mb-2 rock choice">
                         <img src={rock} alt="rock"/>
                     </div>
 
-                    <div onClick={() => handleUserChoice(2)} className="rounded-full h-24 w-24 bg-white border-green-500 text-gray-700 flex justify-center items-center cursor-pointer mb-2 paper choice">
+                    <div onClick={() => handleUserChoice(2)}
+                         className="rounded-full h-24 w-24 bg-white border-green-500 hover:bg-green-300 text-gray-700 flex justify-center items-center cursor-pointer mb-2 paper choice">
                         <img src={paper} alt="paper"/>
                     </div>
 
-                    <div onClick={() => handleUserChoice(3)} className="rounded-full h-24 w-24 bg-white border-purple-500 text-gray-700 flex justify-center items-center cursor-pointer mb-2 scissors choice">
+                    <div onClick={() => handleUserChoice(3)}
+                         className="rounded-full h-24 w-24 bg-white border-purple-500 hover:bg-purple-300 text-gray-700 flex justify-center items-center cursor-pointer mb-2 scissors choice">
                         <img src={scissors} alt="scissors"/>
                     </div>
                 </div>
-                <div className="flex flex-col justify-center items-center">
+                <div className="flex flex-col items-center">
                     <h2 className="pb-2">Computer</h2>
 
-                    <div className="rounded-full h-24 w-24 bg-white border-black flex justify-center items-center cursor-pointer text-4xl computer font-bold choice">?</div>
+                    <div className="rounded-full h-24 w-24 bg-white border-black flex justify-center items-center cursor-pointer text-4xl computer font-bold choice pointer-events-none">?</div>
                 </div>
             </div>
 

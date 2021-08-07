@@ -58,6 +58,18 @@ const TypingTester = () => {
         setSecondsToCount(parseInt(e.target.value));
     }
 
+    function handleClick(e) {
+        if(e.key === 'Enter') {
+            setEditing(editing => {
+                return !editing;
+            });
+        }
+    }
+
+    function handleReset() {
+        reset();
+    }
+
     return (
         <div className={'px-6'}>
             { editSec ? (
@@ -75,13 +87,13 @@ const TypingTester = () => {
                     <button className={'text-center w-full bg-blue-900 hover:bg-blue-700 rounded-md text-white py-3 px-6 font-medium'} onClick={() => start()}>Start</button>
                 </div>
                 <div className={'p-2'}>
-                    <button className={'text-center w-full bg-blue-900 hover:bg-blue-700 rounded-md text-white py-3 px-6 font-medium'} onClick={() => reset()}>Restart</button>
+                    <button className={'text-center w-full bg-blue-900 hover:bg-blue-700 rounded-md text-white py-3 px-6 font-medium'} onClick={() => handleReset()}>Restart</button>
                 </div>
             </div>
 
             {editing ? (
-                <p className={'py-4'} onDoubleClick={() => markAsEditing()}>
-                    <input type="text" defaultValue={paragraph} className={'rounded-md p-2 w-full border mr-0 text-gray-800 border-gray-200 bg-white'} onChange={handleParagraph}/>
+                <p className={'py-4'}>
+                    <input type="text" defaultValue={paragraph} className={'rounded-md p-2 w-full border mr-0 text-gray-800 border-gray-200 bg-white'} onChange={handleParagraph} onKeyUp={handleClick}/>
                 </p>
             ) : (
                 <p className={'py-4'} onDoubleClick={() => markAsEditing()}>
