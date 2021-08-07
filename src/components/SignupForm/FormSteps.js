@@ -15,17 +15,17 @@ export default function FormSteps() {
        <div className="step-links text-xl font-bold">
 
            <NavLink to="/form/profile" className="p-2">
-               {isProfileDone ? 'Y' : 'N' } Signup form
+               {isProfileDone ? '✔' : '❕' } Signup form
            </NavLink>
 
            {isProfileDone ? (<NavLink to="/form/social" className="p-2">
-               {isSocialDone ? 'Y' : 'N' } Social form
-           </NavLink>) : (<a> Social form </a>) }
+               {isSocialDone ? '✔' : '❕' } Social form
+           </NavLink>) : (<button className={'p-2'}> Social form </button>) }
 
 
            { isProfileDone && isSocialDone ? (
                <NavLink to="/form/review" className="p-2">Review</NavLink>
-           ) : (<a>Review</a>) }
+           ) : (<button className={'p-2'}>Review</button>) }
 
        </div>
     )

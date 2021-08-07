@@ -20,9 +20,14 @@ const Pomodoro = () => {
     const [settingRotation, setSettingRotation] = useState(0);
     const [showAdvanced,setShowAdvanced] = useState(false);
 
+    const [longBreak,setLongBreak] = useState('15:00');
+    const [shortBreak,setShortBreak] = useState('5:00');
+
     const minutes = padTime(Math.floor(timeLeft / 60));
     const seconds = padTime(timeLeft - minutes * 60);
     const intervalRef = useRef(null);
+
+    const [focusTime,setFocusTime] = useState(`${minutes}:${seconds}`);
 
     function startTimer() {
         if(intervalRef.current !== null) return;
@@ -170,26 +175,26 @@ const Pomodoro = () => {
                         <div className="py-2 px-4 flex flex-col">
                             <label className="py-1 flex items-baseline">
                                 Focus time:&nbsp;&nbsp;
-                                <input type="text" className="p-2 mb-4 bg-white border border-gray-200 rounded shadow-sm"/>
+                                <input type="text" defaultValue={focusTime} onChange={(e) =>setFocusTime(e.target.value) } className="p-2 mb-4 bg-white border border-gray-200 rounded shadow-sm"/>
                             </label>
                             <label className="py-1 flex items-baseline">
                                 Short break:&nbsp;
-                                <input type="text" className="p-2 mb-4 bg-white border border-gray-200 rounded shadow-sm"/>
+                                <input type="text" defaultValue={shortBreak} onChange={(e) =>setShortBreak(e.target.value) } className="p-2 mb-4 bg-white border border-gray-200 rounded shadow-sm"/>
                             </label>
                             <label className="py-1 flex items-baseline">
                                 Long break:&nbsp;&nbsp;
-                                <input type="text" className="p-2 mb-4 bg-white border border-gray-200 rounded shadow-sm"/>
+                                <input type="text" defaultValue={longBreak} onChange={(e) => setLongBreak(e.target.value) } className="p-2 mb-4 bg-white border border-gray-200 rounded shadow-sm"/>
                             </label>
                             <label className="py-1 flex items-baseline">
                                 Rounds:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <input type="number" step={1} min={1} className="p-2 mb-4 bg-white border border-gray-200 rounded shadow-sm"/>
+                                <input type="number" step={1} min={1} value={rounds} onChange={(e) => setRounds(e.target.value)} className="p-2 mb-4 bg-white border border-gray-200 rounded shadow-sm"/>
                             </label>
                         </div>
 
 
                         <div className="flex flex-row items-center justify-between p-5 bg-white border-b rounded-bl-lg rounded-br-lg">
                             <button type="submit" value="submit" className="px-4 py-2 text-white font-semibold bg-blue-500 rounded">
-                                Save
+                                OK
                             </button>
                         </div>
                     </form>

@@ -53,11 +53,11 @@ function Game() {
                 className="bg-indigo-100 border-t-4 border-indigo rounded text-indigo-900 px-4 py-3 shadow-md my-2 absolute">
 
                 <div className="flex flex-row justify-between items-baseline space-x-2">
-                    <p className="text-sm"><img src={userChoice.icon} /></p>
+                    <p className="text-sm"><img src={userChoice.icon} alt={userChoice.name}/></p>
                     {gameState === 'win' && <h1>You won!</h1>}
                     {gameState === 'lose' && <h1>You lost!</h1>}
                     {gameState === 'draw' && <h1>You tied!</h1>}
-                    <p className="text-sm"><img src={computerChoice.icon} /></p>
+                    <p className="text-sm"><img src={computerChoice.icon}  alt={computerChoice.name} /></p>
                 </div>
 
                 <div className="text-center pt-4">
