@@ -4,7 +4,7 @@ import Header from "./components/Header";
 import Game from "./components/Game";
 import Link from "./components/Link";
 import ImageGallery from "./components/ImageGallery";
-import { Switch, Route} from "react-router-dom"
+import {Switch, Route, HashRouter} from "react-router-dom"
 import Trivia from "./components/Trivia";
 import Calendar from "./components/Calendar";
 import Speech from "./components/Speech";
@@ -19,35 +19,37 @@ function App() {
     return (
         <div className="h-screen flex flex-col">
 
-            <Header />
+            <HashRouter basename='/'>
+                <Header />
 
-            <Switch>
-                <Route exact path="/" component={Pomodoro}/>
+                <Switch>
+                    <Route exact path="/" component={Pomodoro}/>
 
-                <Route path="/editor" component={MarkdownEditor}/>
+                    <Route exac path="/editor" component={MarkdownEditor}/>
 
-                <Route path="/game" component={Game}/>
+                    <Route exac path="/game" component={Game}/>
 
-                <Route path="/link" component={Link}/>
+                    <Route exac path="/link" component={Link}/>
 
-                <Route path="/gallery" component={ImageGallery}/>
+                    <Route exac path="/gallery" component={ImageGallery}/>
 
-                <Route path="/trivia" component={Trivia}/>
+                    <Route exac path="/trivia" component={Trivia}/>
 
-                <Route path="/speech" component={Speech}/>
+                    <Route exac path="/speech" component={Speech}/>
 
-                <Route path="/calendar" component={Calendar}/>
+                    <Route exac path="/calendar" component={Calendar}/>
 
-                <Route path="/message" component={Message}/>
+                    <Route exac path="/message" component={Message}/>
 
-                <Route path="/form" component={SignupForm}/>
+                    <Route exac path="/form" component={SignupForm}/>
 
-                <Route path="/memory" component={MemoryGame}/>
+                    <Route exac path="/memory" component={MemoryGame}/>
 
-                <Route path="/math" component={MathGame}/>
+                    <Route exac path="/math" component={MathGame}/>
 
-                <Route path="/typing" component={TypingTester}/>
-            </Switch>
+                    <Route exac path="/typing" component={TypingTester}/>
+                </Switch>
+            </HashRouter>
         </div>
     )
 }

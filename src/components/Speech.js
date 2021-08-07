@@ -29,7 +29,6 @@ const Speech = () => {
         const foundTimer = timers.find(timer => { return timer.time === seconds });
 
         if(foundTimer) {
-            console.log(foundTimer.time);
             doSpeak({text: foundTimer.text});
         }
 
