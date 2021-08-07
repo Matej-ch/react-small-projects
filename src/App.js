@@ -4,7 +4,7 @@ import Header from "./components/Header";
 import Game from "./components/Game";
 import Link from "./components/Link";
 import ImageGallery from "./components/ImageGallery";
-import { BrowserRouter as Router, Switch, Route} from "react-router-dom"
+import { Switch, Route} from "react-router-dom"
 import Trivia from "./components/Trivia";
 import Calendar from "./components/Calendar";
 import Speech from "./components/Speech";
@@ -18,39 +18,36 @@ function App() {
 
     return (
         <div className="h-screen flex flex-col">
-            <Router>
 
-                <Header />
+            <Header />
 
-                <Switch>
-                    <Route exact path="/" component={Pomodoro}/>
+            <Switch>
+                <Route exact path="/" component={Pomodoro}/>
 
-                    <Route path="/editor" component={MarkdownEditor}/>
+                <Route path="/editor" component={MarkdownEditor}/>
 
-                    <Route path="/game" component={Game}/>
+                <Route path="/game" component={Game}/>
 
-                    <Route path="/link" component={Link}/>
+                <Route path="/link" component={Link}/>
 
-                    <Route path="/gallery" component={ImageGallery}/>
+                <Route path="/gallery" component={ImageGallery}/>
 
-                    <Route path="/trivia" component={Trivia}/>
+                <Route path="/trivia" component={Trivia}/>
 
-                    <Route path="/speech" component={Speech}/>
+                <Route path="/speech" component={Speech}/>
 
-                    <Route path="/calendar" component={Calendar}/>
+                <Route path="/calendar" component={Calendar}/>
 
-                    <Route path="/message" component={Message}/>
+                <Route path="/message" component={Message}/>
 
-                    <Route path="/form" component={SignupForm}/>
+                <Route path="/form" component={SignupForm}/>
 
-                    <Route path="/memory" component={MemoryGame}/>
+                <Route path="/memory" component={MemoryGame}/>
 
-                    <Route path="/math" component={MathGame}/>
+                <Route path="/math" component={MathGame}/>
 
-                    <Route path="/typing" component={TypingTester}/>
-                </Switch>
-
-            </Router>
+                <Route path="/typing" component={TypingTester}/>
+            </Switch>
         </div>
     )
 }
