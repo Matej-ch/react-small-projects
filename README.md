@@ -1,23 +1,42 @@
-Issues moved here [https://github.com/users/Matej-ch/projects/2][https://github.com/users/Matej-ch/projects/2]
 
-### Pomodoro
+### [Pomodoro](https://matej-ch.github.io/react-small-projects/)
 
-### Markdown Editor
+Simple pomodoro timer app
 
-### Tabs
+### [Markdown Editor](https://matej-ch.github.io/react-small-projects/#/editor)
 
-### Rock/Paper/Scissors
+Markdown editor
 
-### Link
+### [Rock/Paper/Scissors](https://matej-ch.github.io/react-small-projects/#/game)
 
-### Image gallery
+Game of rock paper scissors agains computer
 
-### Calendar
+### [Link](https://matej-ch.github.io/react-small-projects/#/link)
 
-### Speech
+Movements on canvas and switching sprites best on direction
 
-### Trivia 
+### [Image gallery](https://matej-ch.github.io/react-small-projects/#/gallery)
 
-### Multi-step form
+Loading images from api with search
 
-[https://github.com/users/Matej-ch/projects/2]: https://github.com/users/Matej-ch/projects/2
+### [Speech](https://matej-ch.github.io/react-small-projects/#/speech)
+
+### [Trivia](https://matej-ch.github.io/react-small-projects/#/trivia)
+
+trivia game, question are pulled fro mexternal api
+
+### [Multi-step form](https://matej-ch.github.io/react-small-projects/#/form/profile)
+
+Testing multi step form with animations
+
+### [Memory game](https://matej-ch.github.io/react-small-projects/#/memory)
+
+Simple memory game or pexeso
+
+### [Math cards](https://matej-ch.github.io/react-small-projects/#/math)
+
+Testing drag and drop functionality with react
+
+### [Typing tester](https://matej-ch.github.io/react-small-projects/#/typing)
+
+Testing of typing speed
