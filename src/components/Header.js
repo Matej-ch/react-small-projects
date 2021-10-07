@@ -23,6 +23,8 @@ const Header = () => {
 
                     <NavLink exact to="/calendar">Calendar</NavLink>
 
+                    <NavLink exact to="/clock">Clock</NavLink>
+
                     <NavLink exact to="/message">Vis. messages</NavLink>
 
                     <NavLink exact to="/form/profile">Form</NavLink>

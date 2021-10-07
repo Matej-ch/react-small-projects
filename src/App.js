@@ -13,6 +13,7 @@ import SignupForm from "./components/SignupForm/SignupForm";
 import MemoryGame from "./components/MemoryGame";
 import MathGame from "./components/MathGame";
 import TypingTester from "./components/TypingTester";
+import Clock from "./components/Clock";
 
 function App() {
 
@@ -38,6 +39,8 @@ function App() {
                     <Route exac path="/speech" component={Speech}/>
 
                     <Route exac path="/calendar" component={Calendar}/>
+
+                    <Route exac path="/clock" component={Clock}/>
 
                     <Route exac path="/message" component={Message}/>
 
