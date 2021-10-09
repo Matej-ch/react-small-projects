@@ -456,3 +456,10 @@ code {
         opacity: 0;
     }
 }
+
+.clock {
+    margin-top: 1rem;
+    width: 60vmin;
+    height: auto;
+    filter: url(#shadow-large);
+}
