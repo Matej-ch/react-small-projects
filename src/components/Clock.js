@@ -6,8 +6,7 @@ const Clock = () => {
 
     const clockNumbersRef = useRef(null);
 
-    //const [now,setNow] = useState();
-    //const [hours,setHours] = useState(now.getHours());
+    const [hours,setHours] = useState(0);
     const [minutes,setMinutes] = useState(0);
     const [seconds,setSeconds] = useState(0);
     const intervalRef = useRef(null);
@@ -29,10 +28,17 @@ const Clock = () => {
                 mins = 0;
             }
 
+            let hour = getCurrentHours();
+            if(hour > 12) {
+                hour -= 12;
+            }
+
             setSeconds(sec);
             setMinutes(mins);
+            setHours(hour);
             animate('seconds',sec);
             animate('minutes',mins);
+            //animate('hours',hour);
         },1000)
     }
 
@@ -43,10 +49,13 @@ const Clock = () => {
             clockFace.innerHTML += `<text fill="white" stroke-width="0.2" stroke="black" style="font-weight: bold" transform="rotate(${-90 + 30 * (i + 1)}) translate(34 0) rotate(${90 - 30 * (i + 1)})" > ${zeroPadded(i + 1)}</text>`;
         }
 
-        setSeconds(() => getCurrentSeconds());
-        setMinutes(() => getCurrentMinutes());
+        const date = new Date();
+        setSeconds(date.getSeconds());
+        setMinutes(date.getMinutes());
+        setHours(date.getHours());
 
         startTimer();
+
         }, []);
 
     const getCurrentSeconds = () => {
@@ -59,6 +68,12 @@ const Clock = () => {
         const date = new Date();
 
         return date.getMinutes();
+    }
+
+    const getCurrentHours = () => {
+        const date = new Date();
+
+        return date.getHours();
     }
 
     const animate = (type,value) => {
@@ -76,7 +91,7 @@ const Clock = () => {
         }
 
         if(type === 'minutes') {
-            return `rotate(${-15 + date.getMinutes() * 30})`;
+            return `rotate(${date.getMinutes() * 6})`;
         }
 
         return `rotate(${date.getSeconds() * 6})`;
