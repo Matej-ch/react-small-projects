@@ -1,24 +1,43 @@
+import {useEffect, useRef} from "react";
 
 
 const Clock = () => {
-    return (<div>
-        <svg className={'clock'} viewBox="0 0 100 100" width="100" height="100">
+
+    const clockNumbersRef = useRef(null);
+
+    const zeroPadded = number => ((number >= 10) ? number.toString() : `0${number}`);
+
+    useEffect(() => {
+        const clockFace = clockNumbersRef.current;
+
+        for (let i = 0; i < 12; i += 1) {
+            clockFace.innerHTML += `<text fill="white" stroke-width="0.2" stroke="black" style="font-weight: bold" transform="rotate(${-90 + 30 * (i + 1)}) translate(34 0) rotate(${90 - 30 * (i + 1)})" > ${zeroPadded(i + 1)}</text>`;
+        }
+    }, []);
+
+    return (<div className={'flex justify-center h-full bg-gray-300'}>
+        <svg className={'clock'} viewBox="0 0 100 100">
+
+            { /* definition of shadows and mask */}
             <defs>
-                {/*// filters describing the shadows, applied on the larger and smaller shapes*/}
                 <filter id="shadow-large">
-                    <feDropShadow dx="0" dy="0" stdDeviation="4"/>
+                    <feDropShadow dx="0" dy="0" stdDeviation="2"/>
                 </filter>
                 <filter id="shadow-small">
                     <feDropShadow dx="0" dy="0" stdDeviation="0.2"/>
                 </filter>
 
-                {/*//mask used to cut out a sliver of the overlaid circle*/}
-                <mask
-                    id="mask">
+                <filter id="shadow-seconds">
+                    <feDropShadow dx="0" dy="0" stdDeviation="0.2" floodColor={'#9ce7fc'}/>
+                </filter>
+
+                <filter id="shadow-minutes">
+                    <feDropShadow dx="0" dy="0" stdDeviation="0.2" floodColor={'white'}/>
+                </filter>
+
+                <mask id="mask">
                     <g transform="translate(50 50)">
-                        {/*//starting at -15, incrementing by 30 for each hour*/}
-                        <g
-                            className="hours" transform="rotate(-15)">
+                        <g className="hours" transform="rotate(-15)">
                             <circle
                                 cx="0"
                                 cy="0"
@@ -37,8 +56,8 @@ const Clock = () => {
             <circle
                 cx="50"
                 cy="50"
-                r="46"
-                fill="#20232a">
+                r="44"
+                fill="#041d58">
             </circle>
 
             {/*// circle with the accent color, overlaid before the text elements -->*/}
@@ -52,11 +71,12 @@ const Clock = () => {
 
             {/*// text elements, positioned from the center around the clock -->*/}
             <g
-                className="clock--face"
-                font-size="8px"
+                ref={clockNumbersRef}
+                className="clock--face text-white"
+                fontSize="8px"
                 transform="translate(50 50)"
-                text-anchor="middle"
-                dominant-baseline="middle">
+                textAnchor="middle"
+                dominantBaseline="middle">
 
             </g>
 
@@ -72,21 +92,18 @@ const Clock = () => {
             <circle
                 cx="50"
                 cy="50"
-                r="4"
+                r="2.5"
                 filter="url(#shadow-small)"
                 fill="#303335">
             </circle>
 
-            <g
-                className="hands"
-                transform="translate(50 50)"
-            >
+            <g className="hands" transform="translate(50 50)">
                 <g
                     className="minutes"
                     transform="rotate(240)">
                     <path
                         fill="#fff"
-                        d="M -0.4 8 h 0.8 v -33 h -0.8 z">
+                        d="M -0.4 8 h 0.8 v -33 h -0.8 z"  filter="url(#shadow-minutes)">
                     </path>
                     <circle
                         fill="#303335"
@@ -101,10 +118,10 @@ const Clock = () => {
                     transform="rotate(80)">
                     <path
                         fill="#61dafb"
-                        d="M -0.4 10 h 0.8 v -45 h -0.8 z">
+                        d="M -0.4 10 h 0.8 v -45 h -0.8 z"  filter="url(#shadow-seconds)">
                     </path>
                     <circle
-                        stroke-width="0.4"
+                        strokeWidth="0.4"
                         stroke="#61dafb"
                         fill="#303335"
                         cx="0"
