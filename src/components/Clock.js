@@ -1,11 +1,66 @@
-import {useEffect, useRef} from "react";
+import {useEffect, useRef, useState} from "react";
+import anime from "animejs";
 
 
 const Clock = () => {
 
     const clockNumbersRef = useRef(null);
 
+    //const [now,setNow] = useState();
+    //const [hours,setHours] = useState(now.getHours());
+    //const [minutes,setMinutes] = useState(now.getMinutes());
+    const [seconds,setSeconds] = useState(0);
+    //const [time,setTime] = useState({});
+    //const [rotation,setRotation] = useState({});
+    const intervalRef = useRef(null);
+
     const zeroPadded = number => ((number >= 10) ? number.toString() : `0${number}`);
+    const twelveClock = (twentyFourClock) => {
+        if (twentyFourClock === 0) {
+            return 12;
+        } if (twentyFourClock > 12) {
+            return twentyFourClock - 12;
+        }
+        return twentyFourClock;
+    };
+
+    function startTimer() {
+        if(intervalRef.current !== null) return;
+
+        //console.log(seconds);
+
+        intervalRef.current = setInterval(() => {
+            //getCurrentTime();
+            anime({
+                targets: `g.seconds`,
+                transform: `rotate(${getCurrentTime() * 6})`,
+                duration: 300,
+            });
+            //setSeconds(sec => sec + 1);
+            //seconds++;
+            //setSeconds(seconds => seconds++)
+        },1000)
+    }
+
+    /*function updateClock(instructions) {
+        const { key, operation } = instructions;
+        const { timeValue, rotationValue } = instructions;
+
+        // create a number of degrees based on the previous value and the current operation
+        const degrees = operation === '+' ? rotationValue + 1 : rotationValue - 1;
+        // create a number of hours/minutes/seconds on the basis of the operation
+        let value = operation === '+' ? timeValue + 1 : timeValue - 1;
+
+        // format the value to fall in the prescribed range
+        if (key === 'hours') {
+            value = value > 12 ? 1 : value === 0 ? 12 : value;
+        } else {
+            value = value > 59 ? 0 : value < 0 ? 59 : value;
+        }
+
+        // return the updated time and rotation value
+        return { value, degrees };
+    }*/
 
     useEffect(() => {
         const clockFace = clockNumbersRef.current;
@@ -13,7 +68,45 @@ const Clock = () => {
         for (let i = 0; i < 12; i += 1) {
             clockFace.innerHTML += `<text fill="white" stroke-width="0.2" stroke="black" style="font-weight: bold" transform="rotate(${-90 + 30 * (i + 1)}) translate(34 0) rotate(${90 - 30 * (i + 1)})" > ${zeroPadded(i + 1)}</text>`;
         }
-    }, []);
+
+        console.log('seconds first:',seconds);
+
+        getCurrentTime();
+
+        console.log('seconds second:',seconds);
+        //console.log(seconds);
+        /*setTime({
+            hours: twelveClock(hours), // 1-12
+            minutes, // 0-59
+            seconds, // 0-59
+        });*/
+
+        /*setRotation({
+            hours: twelveClock(hours),
+            minutes,
+            seconds,
+        });*/
+
+        /*const entries = Object.entries(time);
+        entries.forEach(([key, value]) => {
+            anime({
+                targets: `g.${key}`,
+                transform: (key === 'hours') ? `rotate(${-15 + value * 30})` : `rotate(${value * 6})`,
+                duration: 1000,
+            });
+        })*/
+
+        startTimer();
+        }, []);
+
+    /*useEffect(() => {
+
+    })*/
+    const getCurrentTime = () => {
+        const date = new Date();
+
+        return date.getSeconds();
+    }
 
     return (<div className={'flex justify-center h-full bg-gray-300'}>
         <svg className={'clock'} viewBox="0 0 100 100">

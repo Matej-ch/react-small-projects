@@ -10,6 +10,7 @@
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.6.3",
     "@use-it/interval": "^1.0.0",
+    "animejs": "^3.2.1",
     "autoprefixer": "^9.8.6",
     "framer-motion": "^3.10.0",
     "install": "^0.13.0",
