@@ -33,12 +33,12 @@ const Clock = () => {
                 hour -= 12;
             }
 
-            setSeconds(sec);
-            setMinutes(mins);
-            setHours(hour);
+            setSeconds(seconds => sec);
+            setMinutes(minutes => mins);
+            setHours(hours => hour);
             animate('seconds',sec);
             animate('minutes',mins);
-            //animate('hours',hour);
+            animate('hours',hour);
         },1000)
     }
 
@@ -50,9 +50,9 @@ const Clock = () => {
         }
 
         const date = new Date();
-        setSeconds(date.getSeconds());
-        setMinutes(date.getMinutes());
-        setHours(date.getHours());
+        setSeconds(_ => date.getSeconds());
+        setMinutes(_ => date.getMinutes());
+        setHours(_ => date.getHours());
 
         startTimer();
 
@@ -77,6 +77,7 @@ const Clock = () => {
     }
 
     const animate = (type,value) => {
+
         anime({
             targets: `g.${type}`,
             transform: (type === 'hours') ? `rotate(${-15 + value * 30})` : `rotate(${value * 6})`,
