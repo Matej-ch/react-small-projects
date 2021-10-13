@@ -24,6 +24,8 @@ const Calendar = () => {
         setMonth(date.getMonth());
         setDay(date.getDate());
 
+        daysOnScreen(date.getFullYear(),date.getMonth());
+
     },[]);
 
     const days = ['Sun',
@@ -92,8 +94,68 @@ const Calendar = () => {
 
     }
 
-    function daysOnScreen() {
+    function daysOnScreen(y, m)
+    {
+        let daysArray = [];
 
+        let d = new Date();
+
+        // First day of the week in the selected month
+        let  firstDayOfMonth = new Date(y, m, 1).getDay();
+
+        // Last day of the selected month
+        let lastDateOfMonth =  new Date(y, m+1, 0).getDate();
+
+        // Last day of the previous month
+        let lastDayOfLastMonth = m === 0 ? new Date(y-1, 11, 0).getDate() : new Date(y, m, 0).getDate();
+
+        let i = 1;
+        do {
+            let dow = new Date(y, m, i).getDay();
+            let row = [];
+            if (parseInt(dow) == 0 ) {
+                row = [];
+            } else if ( i == 1 ) {
+                row = [];
+                let k = lastDayOfLastMonth - firstDayOfMonth + 1;
+                for(let j=0; j < firstDayOfMonth; j++) {
+                    row.push(k);
+                    //console.log('row',row);
+                    k++;
+                }
+            }
+
+            console.log('row',row);
+            //let chk = new Date();
+            //let chkY = chk.getFullYear();
+            //let chkM = chk.getMonth();
+
+            //if (chkY == this.currYear && chkM == this.currMonth && i == this.currDay) {
+                //today
+                row.push(i);
+                //html += '<td class="today">' + i + '</td>';
+            //} else {
+                //row.push(i);
+                //html += '<td class="normal">' + i + '</td>';
+            //}
+
+            if ( parseInt(dow) == 6) {
+                daysArray.push(row);
+                console.log('daysArray',daysArray);
+                row = [];
+            }else if ( i == parseInt(lastDateOfMonth)) {
+                let k=1;
+                for(dow; dow < 6; dow++) {
+                    row.push(k);
+                    //html += '<td class="not-current">' + k + '</td>';
+                    k++;
+                }
+            }
+
+            i++;
+        } while(i <= lastDateOfMonth);
+
+        console.log(daysArray);
     }
 
     return (
