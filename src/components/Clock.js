@@ -1,46 +1,16 @@
 import {useEffect, useRef, useState} from "react";
-import anime from "animejs";
-
 
 const Clock = () => {
 
     const clockNumbersRef = useRef(null);
 
-    const [hours,setHours] = useState(0);
-    const [minutes,setMinutes] = useState(0);
-    const [seconds,setSeconds] = useState(0);
+    const [time,setTime] = useState(new Date());
+    const [hours,setHours] = useState(time.getHours());
+    const [minutes,setMinutes] = useState(time.getMinutes());
+    const [seconds,setSeconds] = useState(time.getSeconds());
     const intervalRef = useRef(null);
 
     const zeroPadded = number => ((number >= 10) ? number.toString() : `0${number}`);
-
-    function startTimer() {
-        if(intervalRef.current !== null) return;
-
-        intervalRef.current = setInterval(() => {
-
-            let sec = getCurrentSeconds();
-            if(sec > 59) {
-                sec = 0;
-            }
-
-            let mins = getCurrentMinutes();
-            if(mins > 59) {
-                mins = 0;
-            }
-
-            let hour = getCurrentHours();
-            if(hour > 12) {
-                hour -= 12;
-            }
-
-            setSeconds(seconds => sec);
-            setMinutes(minutes => mins);
-            setHours(hours => hour);
-            animate('seconds',sec);
-            animate('minutes',mins);
-            animate('hours',hour);
-        },1000)
-    }
 
     useEffect(() => {
         const clockFace = clockNumbersRef.current;
@@ -49,53 +19,33 @@ const Clock = () => {
             clockFace.innerHTML += `<text fill="white" stroke-width="0.2" stroke="black" style="font-weight: bold" transform="rotate(${-90 + 30 * (i + 1)}) translate(34 0) rotate(${90 - 30 * (i + 1)})" > ${zeroPadded(i + 1)}</text>`;
         }
 
-        const date = new Date();
-        setSeconds(_ => date.getSeconds());
-        setMinutes(_ => date.getMinutes());
-        setHours(_ => date.getHours());
+        intervalRef.current = setInterval(() => {
+            setTime(new Date());
+        }, 1000);
 
-        startTimer();
+        return () => {
+            clearInterval(intervalRef.current);
+        };
 
         }, []);
 
-    const getCurrentSeconds = () => {
-        const date = new Date();
+    useEffect(() => {
+        setHours(time.getHours());
+        setMinutes(time.getMinutes());
+        setSeconds(time.getSeconds());
+    },[time])
 
-        return date.getSeconds();
-    }
-
-    const getCurrentMinutes = () => {
-        const date = new Date();
-
-        return date.getMinutes();
-    }
-
-    const getCurrentHours = () => {
-        const date = new Date();
-
-        return date.getHours();
-    }
-
-    const animate = (type,value) => {
-
-        anime({
-            targets: `g.${type}`,
-            transform: (type === 'hours') ? `rotate(${-15 + value * 30})` : `rotate(${value * 6})`,
-            duration: 200,
-        });
-    }
 
     const setRotation = (type) => {
-        const date = new Date();
         if(type === 'hours') {
-            return `rotate(${-15 + date.getHours() * 30})`;
+            return `rotate(${-15 + hours * 30})`;
         }
 
         if(type === 'minutes') {
-            return `rotate(${date.getMinutes() * 6})`;
+            return `rotate(${minutes * 6})`;
         }
 
-        return `rotate(${date.getSeconds() * 6})`;
+        return `rotate(${seconds * 6})`;
     }
 
     return (<div className={'flex justify-center h-full bg-gray-300'}>
