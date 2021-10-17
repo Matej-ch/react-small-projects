@@ -1,13 +1,5 @@
 import {useEffect, useState} from "react";
 
-const today = new Date();
-const currentMonth = today.getMonth();
-const currentYear = today.getFullYear();
-
-function daysInMonth(currentMonth, currentYear) {
-    return 32 - new Date(currentYear, currentMonth, 32).getDate();
-}
-
 const Calendar = () => {
     const [choosingType, setChoosingType] = useState('start');
     const [startDate, setStartDate] = useState(null);
@@ -16,6 +8,7 @@ const Calendar = () => {
     const [month,setMonth] = useState(0);
     const [day,setDay] = useState(0);
     const [year,setYear] = useState(0);
+    const [daysInMonth,setDaysInMonth] = useState([]);
 
     useEffect(() => {
         const date = new Date();
@@ -39,8 +32,6 @@ const Calendar = () => {
     const months = [
         'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'
     ];
-
-    const calendarDates = Array(daysInMonth(currentMonth,currentYear)).fill(0).map((e,i) => i);
 
     function updateDate(chosenDay) {
 
@@ -98,8 +89,6 @@ const Calendar = () => {
     {
         let daysArray = [];
 
-        let d = new Date();
-
         // First day of the week in the selected month
         let  firstDayOfMonth = new Date(y, m, 1).getDay();
 
@@ -110,52 +99,39 @@ const Calendar = () => {
         let lastDayOfLastMonth = m === 0 ? new Date(y-1, 11, 0).getDate() : new Date(y, m, 0).getDate();
 
         let i = 1;
+        let row = [];
         do {
-            let dow = new Date(y, m, i).getDay();
-            let row = [];
-            if (parseInt(dow) == 0 ) {
+            let dayOfWeek = new Date(y, m, i).getDay();
+
+            if (parseInt(dayOfWeek) === 0 ) {
                 row = [];
-            } else if ( i == 1 ) {
+            } else if ( i === 1 ) {
                 row = [];
                 let k = lastDayOfLastMonth - firstDayOfMonth + 1;
-                for(let j=0; j < firstDayOfMonth; j++) {
+                for(let j = 0; j < firstDayOfMonth; j++) {
                     row.push(k);
-                    //console.log('row',row);
                     k++;
                 }
             }
 
-            console.log('row',row);
-            //let chk = new Date();
-            //let chkY = chk.getFullYear();
-            //let chkM = chk.getMonth();
+            row.push(i);
 
-            //if (chkY == this.currYear && chkM == this.currMonth && i == this.currDay) {
-                //today
-                row.push(i);
-                //html += '<td class="today">' + i + '</td>';
-            //} else {
-                //row.push(i);
-                //html += '<td class="normal">' + i + '</td>';
-            //}
-
-            if ( parseInt(dow) == 6) {
+            if ( parseInt(dayOfWeek) === 6) {
                 daysArray.push(row);
-                console.log('daysArray',daysArray);
                 row = [];
-            }else if ( i == parseInt(lastDateOfMonth)) {
+            }else if ( i === parseInt(lastDateOfMonth)) {
                 let k=1;
-                for(dow; dow < 6; dow++) {
+                for(dayOfWeek; dayOfWeek < 6; dayOfWeek++) {
                     row.push(k);
-                    //html += '<td class="not-current">' + k + '</td>';
                     k++;
                 }
+                daysArray.push(row);
             }
 
             i++;
         } while(i <= lastDateOfMonth);
 
-        console.log(daysArray);
+        setDaysInMonth(daysArray);
     }
 
     return (
@@ -187,15 +163,17 @@ const Calendar = () => {
 
                     </div>
 
-                    <div>
-                        {calendarDates.map((day,index) => {
-                            const dayNum = day + 1;
-                            let isSelected = dayNum  === startDate || dayNum === endDate;
+                    <div className={'flex justify-between px-4 mt-2 flex-wrap'}>
+                        {daysInMonth.map((daysInWeek,index) =>
+                            daysInWeek.map((day,jindex) => {
+                                const dayNum = day + 1;
+                                let isSelected = dayNum  === startDate || dayNum === endDate;
 
-                            return <button key={index} className={`calendar-day  ${isSelected ? ' calendar-day-selected' : ''}`} onClick={() => updateDate(dayNum)}>
-                                {dayNum}
-                            </button>
-                        }) }
+                                return <button key={jindex} className={`calendar-day  ${isSelected ? ' calendar-day-selected' : ''}`} onClick={() => updateDate(dayNum)}>
+                                    {dayNum}
+                                </button>
+                            })
+                        ) }
                     </div>
                 </div>
             </div>
