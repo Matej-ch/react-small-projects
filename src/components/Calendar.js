@@ -5,21 +5,21 @@ const Calendar = () => {
     const [startDate, setStartDate] = useState(null);
     const [endDate, setEndDate] = useState(null);
 
-    const [month,setMonth] = useState(0);
-    const [day,setDay] = useState(0);
-    const [year,setYear] = useState(0);
+    const date = new Date();
+
+    const [month,setMonth] = useState(date.getMonth());
+    const [day,setDay] = useState(date.getDate());
+    const [year,setYear] = useState(date.getFullYear());
     const [daysInMonth,setDaysInMonth] = useState([]);
 
     useEffect(() => {
-        const date = new Date();
-
-        setYear(date.getFullYear());
-        setMonth(date.getMonth());
-        setDay(date.getDate());
-
         daysOnScreen(date.getFullYear(),date.getMonth());
 
     },[]);
+
+    useEffect(() => {
+        daysOnScreen(year,month);
+    }, [month,year])
 
     const days = ['Sun',
         'Mon',
@@ -57,7 +57,6 @@ const Calendar = () => {
 
     function nextMonth()
     {
-        console.log(month);
         if ( month === 11 ) {
             setMonth(0);
             setYear(year => year + 1);
@@ -65,7 +64,6 @@ const Calendar = () => {
         else {
             setMonth(month => month + 1);
         }
-        currMonth();
     }
 
     function previousMonth()
@@ -77,18 +75,10 @@ const Calendar = () => {
         else {
             setMonth(month => month - 1)
         }
-        currMonth();
-    }
-
-    function currMonth()
-    {
-
     }
 
     function daysOnScreen(y, m)
     {
-        let daysArray = [];
-
         // First day of the week in the selected month
         let  firstDayOfMonth = new Date(y, m, 1).getDay();
 
@@ -100,6 +90,7 @@ const Calendar = () => {
 
         let i = 1;
         let row = [];
+        let daysArray = [];
         do {
             let dayOfWeek = new Date(y, m, i).getDay();
 
@@ -142,8 +133,8 @@ const Calendar = () => {
                 <div className="date-chooser flex flex-row justify-between w-full max-w-sm flex-wrap">
 
                     <div className={'flex flex-row justify-between w-full pb-4'}>
-                        <button className={'font-bold text-white p-2 border rounded-sm hover:bg-gray-700'} onClick={previousMonth}>Previous</button>
-                        <button className={'font-bold text-white p-2 border rounded-sm hover:bg-gray-700'} onClick={nextMonth}>Next</button>
+                        <button className={'font-bold text-white p-2 border rounded hover:bg-gray-700'} onClick={previousMonth}>Previous</button>
+                        <button className={'font-bold text-white p-2 border rounded hover:bg-gray-700'} onClick={nextMonth}>Next</button>
                     </div>
 
                     <button className="date-chooser-button flex flex-col" onClick={() => setChoosingType('start')}>
@@ -166,7 +157,7 @@ const Calendar = () => {
                     <div className={'flex justify-between px-4 mt-2 flex-wrap'}>
                         {daysInMonth.map((daysInWeek,index) =>
                             daysInWeek.map((day,jindex) => {
-                                const dayNum = day + 1;
+                                const dayNum = day;
                                 let isSelected = dayNum  === startDate || dayNum === endDate;
 
                                 return <button key={jindex} className={`calendar-day  ${isSelected ? ' calendar-day-selected' : ''}`} onClick={() => updateDate(dayNum)}>
