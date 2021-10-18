@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/react-small-projects/static/css/main.639bdcbf.chunk.css",
+    "main.js": "/react-small-projects/static/js/main.f76cd3ab.chunk.js",
+    "main.js.map": "/react-small-projects/static/js/main.f76cd3ab.chunk.js.map",
+    "runtime-main.js": "/react-small-projects/static/js/runtime-main.19eab8dc.js",
+    "runtime-main.js.map": "/react-small-projects/static/js/runtime-main.19eab8dc.js.map",
+    "static/css/2.55ccbe94.chunk.css": "/react-small-projects/static/css/2.55ccbe94.chunk.css",
+    "static/js/2.1da743bb.chunk.js": "/react-small-projects/static/js/2.1da743bb.chunk.js",
+    "static/js/2.1da743bb.chunk.js.map": "/react-small-projects/static/js/2.1da743bb.chunk.js.map",
+    "static/js/3.877f3e10.chunk.js": "/react-small-projects/static/js/3.877f3e10.chunk.js",
+    "static/js/3.877f3e10.chunk.js.map": "/react-small-projects/static/js/3.877f3e10.chunk.js.map",
+    "index.html": "/react-small-projects/index.html",
+    "static/css/2.55ccbe94.chunk.css.map": "/react-small-projects/static/css/2.55ccbe94.chunk.css.map",
+    "static/css/main.639bdcbf.chunk.css.map": "/react-small-projects/static/css/main.639bdcbf.chunk.css.map",
+    "static/js/2.1da743bb.chunk.js.LICENSE.txt": "/react-small-projects/static/js/2.1da743bb.chunk.js.LICENSE.txt",
+    "static/media/icon-paper.8b57a6b1.svg": "/react-small-projects/static/media/icon-paper.8b57a6b1.svg",
+    "static/media/icon-rock.476e90a9.svg": "/react-small-projects/static/media/icon-rock.476e90a9.svg",
+    "static/media/icon-scissors.3b1a5d7e.svg": "/react-small-projects/static/media/icon-scissors.3b1a5d7e.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.19eab8dc.js",
+    "static/css/2.55ccbe94.chunk.css",
+    "static/js/2.1da743bb.chunk.js",
+    "static/css/main.639bdcbf.chunk.css",
+    "static/js/main.f76cd3ab.chunk.js"
+  ]
+}
